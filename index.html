@@ -278,9 +278,23 @@ body{font-family:'Outfit',sans-serif;background:#F8F6F1;color:#1A2535;overflow-x
 .plat-map-frame{
   position:relative;border:2px solid rgba(201,151,42,.3);
   overflow:hidden;background:#111;
+  cursor:zoom-in;
 }
 .plat-map-frame img{width:100%;display:block;transition:transform .4s var(--ease)}
 .plat-map-frame:hover img{transform:scale(1.02)}
+.plat-map-hint{
+  position:absolute;bottom:1rem;left:1rem;
+  background:rgba(13,31,60,.85);backdrop-filter:blur(6px);
+  color:var(--white);
+  padding:.5rem .9rem;
+  font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  display:flex;align-items:center;gap:.4rem;
+  opacity:0;transform:translateY(6px);
+  transition:opacity .25s var(--ease),transform .25s var(--ease);
+  pointer-events:none;
+}
+.plat-map-hint span{font-size:.85rem}
+.plat-map-frame:hover .plat-map-hint{opacity:1;transform:translateY(0)}
 .plat-map-badge{
   position:absolute;top:1rem;right:1rem;
   background:var(--gold);color:var(--white);
@@ -911,9 +925,10 @@ footer{background:#070E1A;padding:5rem 0 2.5rem}
         </div>
       </div>
       <div class="reveal reveal-d2">
-        <div class="plat-map-frame">
+        <div class="plat-map-frame" onclick="openPlatLightbox()" role="button" tabindex="0" aria-label="Open larger view of site plan" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlatLightbox()}">
           <img src="assets/gallery/official-site-plan.png" alt="San Sebastian Official Site Plan" loading="lazy"/>
           <div class="plat-map-badge">Official Plat</div>
+          <div class="plat-map-hint"><span>🔍</span> Click to enlarge</div>
         </div>
       </div>
     </div>
@@ -1780,6 +1795,8 @@ function openLightbox(index){
   document.getElementById('lb-img').alt=item.getAttribute('data-caption')||'';
   document.getElementById('lbCaption').textContent=item.getAttribute('data-caption')||'';
   document.getElementById('lbCounter').textContent=`${index+1} / ${allItems.length}`;
+  document.getElementById('lbPrev').style.display='';
+  document.getElementById('lbNext').style.display='';
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow='hidden';
 }
@@ -1807,6 +1824,20 @@ function lbNav(dir){
 allItems.forEach((item,i)=>{
   item.addEventListener('click',()=>openLightbox(i));
 });
+
+/* ── STANDALONE PLAT LIGHTBOX (not part of gallery loop) ── */
+function openPlatLightbox(){
+  const img=document.getElementById('lb-img');
+  img.src='assets/gallery/official-site-plan.png';
+  img.alt='San Sebastian Official Site Plan';
+  document.getElementById('lbCaption').textContent='Official Site Plan — click anywhere to close';
+  document.getElementById('lbCounter').textContent='';
+  // Hide prev/next since there's nothing to navigate to
+  document.getElementById('lbPrev').style.display='none';
+  document.getElementById('lbNext').style.display='none';
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
 document.getElementById('lbClose').addEventListener('click',closeLightbox);
 document.getElementById('lbPrev').addEventListener('click',()=>lbNav(-1));
 document.getElementById('lbNext').addEventListener('click',()=>lbNav(1));
