@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buyer Financing Summary – 3150 Expressway 83, Donna, TX</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --orange: #E87722;
+    --black: #111111;
+    --gray: #555555;
+    --light: #F7F7F7;
+    --border: #DDDDDD;
+    --white: #FFFFFF;
+  }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: #ffffff;
+    color: var(--black);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .lang-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 18px 0 10px;
+    background: #fff;
+  }
+
+  .lang-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    padding: 10px 28px;
+    border: 2px solid var(--black);
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+
+  .lang-btn.active {
+    background: var(--black);
+    color: #fff;
+  }
+
+  .lang-btn:hover:not(.active) {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #fff;
+  }
+
+  @media print {
+    .lang-toggle { display: none; }
+    .lang-section.active { display: block !important; }
+    .lang-section.hidden { display: none !important; }
+  }
+
+  .lang-section { display: none; }
+  .lang-section.active { display: block; }
+
+  @page {
+    size: letter portrait;
+    margin: 0.4in 0.45in;
+  }
+
+  .page {
+    width: 7.5in;
+    margin: 0 auto;
+    padding: 0.3in 0.4in 0.3in;
+    background: #fff;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    border-bottom: 3px solid var(--black);
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .logo-placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    color: var(--orange);
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .header-divider {
+    width: 2px;
+    height: 40px;
+    background: var(--border);
+  }
+
+  .property-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--black);
+    text-transform: uppercase;
+  }
+
+  .property-sub {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  .doc-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-top: 4px;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    border-left: 4px solid var(--orange);
+    padding-left: 10px;
+    margin-bottom: 12px;
+  }
+
+  .deal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .deal-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--black);
+    padding: 14px 12px 12px;
+    text-align: center;
+  }
+
+  .deal-card.highlight {
+    border-top-color: var(--orange);
+    background: #FFF8F3;
+  }
+
+  .card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 6px;
+  }
+
+  .card-value {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .deal-card.highlight .card-value {
+    color: var(--orange);
+    font-size: 32px;
+  }
+
+  .card-sub {
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 5px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .metric-card {
+    background: var(--black);
+    padding: 12px 10px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .m-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 5px;
+  }
+
+  .m-value {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--orange);
+    line-height: 1.1;
+  }
+
+  .m-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 3px;
+  }
+
+  .fin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .fin-table thead tr {
+    background: var(--black);
+    color: #fff;
+  }
+
+  .fin-table thead th {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: center;
+  }
+
+  .fin-table thead th:first-child { text-align: left; }
+
+  .fin-table tbody tr:nth-child(even) { background: var(--light); }
+
+  .fin-table tbody td {
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    color: var(--black);
+  }
+
+  .fin-table tbody td:first-child {
+    text-align: left;
+    font-weight: 700;
+  }
+
+  .orange-text { color: var(--orange) !important; font-weight: 800 !important; }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .step-card {
+    border: 1px solid var(--border);
+    padding: 14px 12px 12px;
+    text-align: center;
+  }
+
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+  }
+
+  .step-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--black);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .step-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .footer {
+    border-top: 2px solid var(--black);
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 10px;
+    color: var(--gray);
+    margin-top: 6px;
+  }
+
+  .footer-left { line-height: 1.6; }
+  .footer-right { text-align: right; line-height: 1.6; }
+  .footer strong { color: var(--black); font-weight: 700; }
+  .disclaimer { font-size: 9px; color: #999; margin-top: 4px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('en', this)">🇺🇸 English</button>
+  <button class="lang-btn" onclick="setLang('es', this)">🇲🇽 Español</button>
+</div>
+
+<!-- ========== ENGLISH ========== -->
+<div class="lang-section active" id="lang-en">
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="logo-placeholder">SVN | HANNA SOLUTIONS<br>COMMERCIAL REAL ESTATE</div>
+      <div class="header-divider"></div>
+      <div>
+        <div class="property-name">3150 Expressway 83 · Donna, Texas</div>
+        <div class="property-sub">Hidalgo County · PID 206715 · Zoning: CO (Commercial)</div>
+      </div>
+    </div>
+    <div class="doc-title">Buyer Financing Summary — Seller Financing Proposal</div>
+  </div>
+
+  <div class="section-title">Deal Structure</div>
+  <div class="deal-grid">
+    <div class="deal-card">
+      <div class="card-label">Sales Price</div>
+      <div class="card-value">$2,300,000</div>
+      <div class="card-sub">Total Purchase Price</div>
+    </div>
+    <div class="deal-card">
+      <div class="card-label">Down Payment (15%)</div>
+      <div class="card-value">$345,000</div>
+      <div class="card-sub">Due at Closing</div>
+    </div>
+    <div class="deal-card">
+      <div class="card-label">Seller-Financed Amount</div>
+      <div class="card-value">$1,955,000</div>
+      <div class="card-sub">85% Carried by Seller</div>
+    </div>
+  </div>
+
+  <div class="deal-grid">
+    <div class="deal-card highlight">
+      <div class="card-label">Monthly Payment</div>
+      <div class="card-value">$9,775</div>
+      <div class="card-sub">Interest Only · Per Month</div>
+    </div>
+    <div class="deal-card">
+      <div class="card-label">Interest Rate</div>
+      <div class="card-value">6.00%</div>
+      <div class="card-sub">Annual · Interest Only</div>
+    </div>
+    <div class="deal-card">
+      <div class="card-label">Loan Term</div>
+      <div class="card-value">5 Yrs</div>
+      <div class="card-sub">Balloon Payment at Maturity</div>
+    </div>
+  </div>
+
+  <div class="section-title">Property Overview</div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="m-label">Total Acreage</div>
+      <div class="m-value">5.44 AC</div>
+      <div class="m-sub">Net Acres</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Total Square Feet</div>
+      <div class="m-value">236,966 SF</div>
+      <div class="m-sub">Land Area</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Price Per SF</div>
+      <div class="m-value">$9.66 / SF</div>
+      <div class="m-sub">Based on 236,966 SF</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Location</div>
+      <div class="m-value">I-2 & Victoria Rd</div>
+      <div class="m-sub">Donna, Texas</div>
+    </div>
+  </div>
+
+  <div class="section-title">Financing Breakdown</div>
+  <table class="fin-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sales Price</td>
+        <td>$2,300,000</td>
+        <td>Full Purchase Price</td>
+      </tr>
+      <tr>
+        <td>Down Payment</td>
+        <td>$345,000</td>
+        <td>15% — Due at Closing</td>
+      </tr>
+      <tr>
+        <td>Seller-Financed Note</td>
+        <td>$1,955,000</td>
+        <td>85% Carried by Seller</td>
+      </tr>
+      <tr>
+        <td>Interest Rate</td>
+        <td>6.00% / Year</td>
+        <td>Interest Only — No Principal Reduction</td>
+      </tr>
+      <tr>
+        <td class="orange-text">Monthly Payment</td>
+        <td class="orange-text">$9,775 / Month</td>
+        <td>Interest Only Payment</td>
+      </tr>
+      <tr>
+        <td>Loan Term</td>
+        <td>5 Years</td>
+        <td>Balloon Balance Due at Year 5</td>
+      </tr>
+      <tr>
+        <td>Price Per Square Foot</td>
+        <td>$9.66 / SF</td>
+        <td>5.44 AC · 236,966 SF</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Seller Financing Process — Next Steps</div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-title">Finalize Purchase Contract & Financing Terms</div>
+      <div class="step-desc">Buyer and Seller agree on sales price, down payment, interest rate, and loan term. All terms are documented in the Purchase Contract.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-title">Open Escrow at Valley Land Title Co.</div>
+      <div class="step-desc">The executed Purchase Contract is deposited at <strong>Valley Land Title Co.</strong> Earnest money is submitted and the title process begins.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-title">Close Within 45 Days</div>
+      <div class="step-desc">Title review, survey, and due diligence are completed. Down payment of <strong>$345,000</strong> is funded at closing. Seller note is executed and property transfers to Buyer.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <strong>SVN | Hanna Solutions Commercial Real Estate</strong><br>
+      Mark Hanna, CCIM · Managing Director · McAllen, Texas<br>
+      <span class="disclaimer">This summary is for discussion purposes only. All figures are estimates. Consult legal and financial counsel before proceeding.</span>
+    </div>
+    <div class="footer-right">
+      <strong>3150 Expressway 83 · Donna, TX 78537</strong><br>
+      PID 206715 · Prepared April 21, 2026
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ========== ESPAÑOL ========== -->
+<div class="lang-section hidden" id="lang-es">
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div class="logo-placeholder">SVN | HANNA SOLUTIONS<br>COMMERCIAL REAL ESTATE</div>
+      <div class="header-divider"></div>
+      <div>
+        <div class="property-name">3150 Expressway 83 · Donna, Texas</div>
+        <div class="property-sub">Condado Hidalgo · PID 206715 · Zonificación: CO (Comercial)</div>
+      </div>
+    </div>
+    <div class="doc-title">Resumen de Financiamiento para el Comprador — Propuesta de Financiamiento del Vendedor</div>
+  </div>
+
+  <div class="section-title">Estructura del Acuerdo</div>
+  <div class="deal-grid">
+    <div class="deal-card">
+      <div class="card-label">Precio de Venta</div>
+      <div class="card-value">$2,300,000</div>
+      <div class="card-sub">Precio Total de Compra</div>
+    </div>
+    <div class="deal-card">
+      <div class="card-label">Pago Inicial (15%)</div>
+      <div class="card-value">$345,000</div>
+      <div class="card-sub">Pagadero al Cierre</div>
+    </div>
+    <div class="deal-card">
+      <div class="card-label">Monto Financiado por Vendedor</div>
+      <div class="card-value">$1,955,000</div>
+      <div class="card-sub">85% Financiado por el Vendedor</div>
+    </div>
+  </div>
+
+  <div class="deal-grid">
+    <div class="deal-card highlight">
+      <div class="card-label">Pago Mensual</div>
+      <div class="card-value">$9,775</div>
+      <div class="card-sub">Solo Intereses · Por Mes</div>
+    </div>
+    <div class="deal-card">
+      <div class="card-label">Tasa de Interés</div>
+      <div class="card-value">6.00%</div>
+      <div class="card-sub">Anual · Solo Intereses</div>
+    </div>
+    <div class="deal-card">
+      <div class="card-label">Plazo del Préstamo</div>
+      <div class="card-value">5 Años</div>
+      <div class="card-sub">Pago Globo al Vencimiento</div>
+    </div>
+  </div>
+
+  <div class="section-title">Descripción de la Propiedad</div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="m-label">Superficie Total</div>
+      <div class="m-value">5.44 AC</div>
+      <div class="m-sub">Acres Netos</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Pies Cuadrados Totales</div>
+      <div class="m-value">236,966 SF</div>
+      <div class="m-sub">Área del Terreno</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Precio por Pie Cuadrado</div>
+      <div class="m-value">$9.66 / SF</div>
+      <div class="m-sub">Basado en 236,966 SF</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">Ubicación</div>
+      <div class="m-value">I-2 & Victoria Rd</div>
+      <div class="m-sub">Donna, Texas</div>
+    </div>
+  </div>
+
+  <div class="section-title">Desglose del Financiamiento</div>
+  <table class="fin-table">
+    <thead>
+      <tr>
+        <th>Concepto</th>
+        <th>Monto</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Precio de Venta</td>
+        <td>$2,300,000</td>
+        <td>Precio Total de Compra</td>
+      </tr>
+      <tr>
+        <td>Pago Inicial</td>
+        <td>$345,000</td>
+        <td>15% — Pagadero al Cierre</td>
+      </tr>
+      <tr>
+        <td>Nota del Vendedor</td>
+        <td>$1,955,000</td>
+        <td>85% Financiado por el Vendedor</td>
+      </tr>
+      <tr>
+        <td>Tasa de Interés</td>
+        <td>6.00% / Año</td>
+        <td>Solo Intereses — Sin Reducción de Capital</td>
+      </tr>
+      <tr>
+        <td class="orange-text">Pago Mensual</td>
+        <td class="orange-text">$9,775 / Mes</td>
+        <td>Pago de Solo Intereses</td>
+      </tr>
+      <tr>
+        <td>Plazo del Préstamo</td>
+        <td>5 Años</td>
+        <td>Saldo Globo Pagadero al Año 5</td>
+      </tr>
+      <tr>
+        <td>Precio por Pie Cuadrado</td>
+        <td>$9.66 / SF</td>
+        <td>5.44 AC · 236,966 SF</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Proceso de Financiamiento del Vendedor — Próximos Pasos</div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-title">Finalizar Contrato de Compra y Términos de Financiamiento</div>
+      <div class="step-desc">El Comprador y el Vendedor acuerdan el precio, pago inicial, tasa de interés y plazo del préstamo. Todos los términos se documentan en el Contrato de Compra.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-title">Abrir Depósito en Garantía en Valley Land Title Co.</div>
+      <div class="step-desc">El Contrato de Compra ejecutado se deposita en <strong>Valley Land Title Co.</strong> Se envía el depósito en garantía y comienza el proceso de titulación.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-title">Cierre en 45 Días</div>
+      <div class="step-desc">Se completan la revisión de título, levantamiento topográfico y diligencia debida. El pago inicial de <strong>$345,000</strong> se liquida al cierre. La propiedad se transfiere al Comprador.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <strong>SVN | Hanna Solutions Commercial Real Estate</strong><br>
+      Mark Hanna, CCIM · Director General · McAllen, Texas<br>
+      <span class="disclaimer">Este resumen es solo para fines de discusión. Todas las cifras son estimaciones. Consulte a su asesor legal y financiero antes de proceder.</span>
+    </div>
+    <div class="footer-right">
+      <strong>3150 Expressway 83 · Donna, TX 78537</strong><br>
+      PID 206715 · Preparado el 21 de abril de 2026
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+  function setLang(lang, btn) {
+    document.querySelectorAll('.lang-section').forEach(s => {
+      s.classList.remove('active');
+      s.classList.add('hidden');
+    });
+    document.getElementById('lang-' + lang).classList.remove('hidden');
+    document.getElementById('lang-' + lang).classList.add('active');
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
