@@ -175,6 +175,13 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   font-size:.7rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
   color:var(--gold);margin-bottom:.9rem;display:block;font-family:var(--sans);
 }
+.eyebrow.coastal{color:#8AA6B0}      /* lighter coastal for dark bg legibility */
+.eyebrow.olive{color:#9AA37E}        /* lighter olive for dark bg */
+.eyebrow.coastal-dark{color:var(--coastal-deep)}  /* on cream bg */
+.eyebrow.olive-dark{color:var(--olive)}            /* on cream bg */
+/* eyebrow with a small leading accent tick */
+.eyebrow.tick{display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow.tick::before{content:"";width:24px;height:2px;background:currentColor;display:inline-block;opacity:.7}
 .section-title{
   font-family:var(--serif);font-size:clamp(2.3rem,4vw,3.6rem);
   font-weight:600;line-height:1.08;color:var(--navy);margin-bottom:1.4rem;
@@ -182,6 +189,8 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 }
 .section-title.white{color:var(--white)}
 .section-title em{font-style:italic;font-weight:500;color:var(--gold)}
+.section-title em.coastal{color:#8AA6B0}
+.section-title em.olive{color:#9AA37E}
 .section-body{
   font-size:.95rem;font-weight:400;line-height:1.85;
   color:#54514A;max-width:640px;
@@ -191,6 +200,14 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   width:52px;height:2px;background:var(--gold);
   margin:1.4rem 0;display:block;
 }
+.divider-gold.coastal{background:var(--coastal)}
+.divider-gold.olive{background:var(--olive)}
+/* Tri-color accent divider — uses three brand colors */
+.divider-tri{
+  width:64px;height:3px;margin:1.4rem 0;display:block;border-radius:2px;
+  background:linear-gradient(90deg,var(--gold) 0 33%,var(--sand) 33% 66%,var(--coastal) 66% 100%);
+}
+.divider-tri.center{margin:1.4rem auto}
 
 /* ── BUTTONS ── */
 .btn{
@@ -491,6 +508,10 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   background:var(--cream-dark);border-left:3px solid var(--gold);
   transition:background .25s;
 }
+.lot-features .lot-feat:nth-child(1){border-left-color:var(--gold)}
+.lot-features .lot-feat:nth-child(2){border-left-color:var(--coastal)}
+.lot-features .lot-feat:nth-child(3){border-left-color:var(--olive)}
+.lot-features .lot-feat:nth-child(4){border-left-color:var(--sand)}
 .lot-feat:hover{background:#DED5C5}
 .lot-feat-icon{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
 .lot-feat-title{font-size:.78rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
@@ -1273,7 +1294,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
   <div class="container">
     <div class="plat-layout">
       <div>
-        <span class="eyebrow reveal">The Master Plan</span>
+        <span class="eyebrow tick reveal">The Master Plan</span>
         <h2 class="section-title white reveal reveal-d1">San Sebastian <em>Site Plan</em></h2>
         <span class="divider-gold reveal reveal-d1"></span>
         <p class="section-body white reveal reveal-d2">A carefully designed plan that delivers three residential phases and a prime commercial corridor along Highway 77. Each phase is laid out to maximize livability, green space, and connection throughout the community — modern South Texas living, reimagined.</p>
@@ -1331,7 +1352,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
         </div>
       </div>
       <div style="padding-bottom:2rem">
-        <span class="eyebrow reveal">Lots &amp; Layouts</span>
+        <span class="eyebrow coastal-dark tick reveal">Lots &amp; Layouts</span>
         <h2 class="section-title reveal reveal-d1">A Community Designed<br/><em>For Life</em></h2>
         <span class="divider-gold reveal reveal-d1"></span>
         <p class="section-body reveal reveal-d2">San Sebastian offers an extensive range of lot sizes to suit every family. From expansive 15,167-square-foot lots to efficient 4,711-square-foot options, you can choose the ideal setting for your new home. Every lot accommodates a minimum footprint of 1,300 square feet, with the freedom to build one- or two-story homes and two-car garages.</p>
@@ -1380,9 +1401,9 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 <section id="amenities">
   <div class="container">
     <div class="amenities-header">
-      <span class="eyebrow reveal">Community Lifestyle</span>
-      <h2 class="section-title white reveal reveal-d1">Where Connection<br/><em>Comes Naturally</em></h2>
-      <span class="divider-gold reveal reveal-d1" style="margin:1.4rem auto"></span>
+      <span class="eyebrow olive tick reveal">Community Lifestyle</span>
+      <h2 class="section-title white reveal reveal-d1">Where Connection<br/><em class="olive">Comes Naturally</em></h2>
+      <span class="divider-tri center reveal reveal-d1"></span>
       <p class="section-body white reveal reveal-d2">Thoughtfully planned spaces and shared experiences bring neighbors together. Residents enjoy walking and biking trails, well-maintained parks, dog parks, and open spaces — everyday amenities that make wellness and outdoor living part of the routine.</p>
     </div>
     <div class="amenity-cards">
@@ -1473,9 +1494,9 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 <section id="padmap" class="tex tex-sage">
   <div class="container">
     <div class="padmap-header">
-      <span class="eyebrow reveal">Availability</span>
-      <h2 class="section-title white reveal reveal-d1">Explore the <em>Commercial Pads</em></h2>
-      <span class="divider-gold reveal reveal-d1" style="margin:1.4rem auto"></span>
+      <span class="eyebrow coastal tick reveal">Availability</span>
+      <h2 class="section-title white reveal reveal-d1">Explore the <em class="coastal">Commercial Pads</em></h2>
+      <span class="divider-tri center reveal reveal-d1"></span>
       <p class="section-body white reveal reveal-d2" style="margin:0 auto;text-align:center">Eight engineered pad sites fronting Business 77. Click any pad to view its size, details, and request information.</p>
       <div class="padmap-legend reveal reveal-d3">
         <span class="padmap-legend-item"><span class="padmap-dot available"></span> Available</span>
@@ -1507,9 +1528,9 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 <section id="calculator" class="tex tex-cream">
   <div class="container">
     <div class="calc-header">
-      <span class="eyebrow reveal">Plan Your Investment</span>
+      <span class="eyebrow olive-dark tick reveal">Plan Your Investment</span>
       <h2 class="section-title reveal reveal-d1">Estimate Your <em>Numbers</em></h2>
-      <span class="divider-gold reveal reveal-d1" style="margin:1.4rem auto"></span>
+      <span class="divider-tri center reveal reveal-d1"></span>
       <p class="section-body reveal reveal-d2" style="margin:0 auto;text-align:center">Explore estimated financing for a commercial pad site or a residential lot. Adjust the inputs to see how the numbers work for you.</p>
     </div>
 
@@ -1635,9 +1656,9 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 <section id="phases" class="tex tex-sage">
   <div class="container">
     <div class="phases-header">
-      <span class="eyebrow reveal">Development Progress</span>
+      <span class="eyebrow tick reveal">Development Progress</span>
       <h2 class="section-title white reveal reveal-d1">Project Timeline For<br/><em>San Sebastian Development</em></h2>
-      <span class="divider-gold reveal reveal-d1" style="margin:1.4rem auto"></span>
+      <span class="divider-tri center reveal reveal-d1"></span>
       <p class="section-body white reveal reveal-d2" style="margin:0 auto;text-align:center">A phased community of 185 residential lots and 8 commercial pad sites. Phases 1 and 2 are now selling — Phase 3 completes the vision.</p>
     </div>
     <div class="timeline">
@@ -1792,7 +1813,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
   <div class="container">
     <div class="video-layout">
       <div class="video-left">
-        <span class="eyebrow reveal">Community Showcase</span>
+        <span class="eyebrow tick reveal">Community Showcase</span>
         <h2 class="section-title white reveal reveal-d1">See San Sebastian<br/><em>Come To Life</em></h2>
         <span class="divider-gold reveal reveal-d1"></span>
         <p class="section-body white reveal reveal-d2">Watch our community showcase to experience the vision, the land, and the lifestyle that awaits at San Sebastian in San Benito, Texas — a modern community rooted in life and designed for tomorrow.</p>
@@ -1827,9 +1848,9 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 <section id="location" class="tex tex-cream">
   <div class="container">
     <div class="location-header">
-      <span class="eyebrow reveal">Prime Location</span>
+      <span class="eyebrow olive-dark tick reveal">Prime Location</span>
       <h2 class="section-title reveal reveal-d1">A Great Location For<br/><em>Residents &amp; Businesses</em></h2>
-      <span class="divider-gold reveal reveal-d1" style="margin:1.4rem auto"></span>
+      <span class="divider-tri center reveal reveal-d1"></span>
       <p class="section-body reveal reveal-d2">San Sebastian is situated in the heart of San Benito, Texas, providing convenient access to Business 77 and Oscar Williams Road. Nestled within a thriving community, residents enjoy proximity to parks, educational institutions, and a diverse array of retail establishments.</p>
     </div>
     <div class="map-wrap reveal reveal-d2">
@@ -1893,8 +1914,8 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
   <div class="container">
     <div class="contact-layout">
       <div>
-        <span class="eyebrow reveal">Get In Touch</span>
-        <h2 class="section-title reveal reveal-d1">Have a Question?<br/><em>We're Here to Help.</em></h2>
+        <span class="eyebrow tick reveal">Get In Touch</span>
+        <h2 class="section-title white reveal reveal-d1">Have a Question?<br/><em>We're Here to Help.</em></h2>
         <span class="divider-gold reveal reveal-d1"></span>
         <!-- Commercial Contact Info (default) -->
         <div id="info-commercial" class="contact-info-panel">
