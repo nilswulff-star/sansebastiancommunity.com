@@ -145,7 +145,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
    Layers: topographic contour lines + soft radial
    glow + fine grain, all very low opacity.
 ══════════════════════════════════════════ */
-.tex{position:relative;isolation:isolate}
+.tex{position:relative}
 .tex>*{position:relative;z-index:1}
 /* Sage sections: contour topography + diagonal sheen + grain */
 .tex-sage::before{
@@ -432,9 +432,10 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .phase-tab.phase-three.active{background:var(--olive);border-color:var(--olive)}
 .phase-tab:hover:not(.active){background:rgba(255,255,255,.12);color:var(--white)}
 .plat-map-frame{
-  position:relative;border:2px solid rgba(214,194,161,.45);
-  overflow:hidden;background:var(--cream);
+  position:relative;
+  overflow:hidden;background:var(--navy);
   cursor:zoom-in;border-radius:4px;aspect-ratio:1330/706;
+  box-shadow:0 14px 40px rgba(0,0,0,.22);
 }
 .plat-map-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease)}
 .plat-map-frame:hover img{transform:scale(1.02)}
@@ -488,8 +489,8 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .lots-layout{display:grid;grid-template-columns:1.25fr 1fr;gap:5rem;align-items:center}
 .lots-visual{position:relative}
 .lots-img-wrap{
-  position:relative;overflow:hidden;
-  border:3px solid var(--gold-pale);
+  position:relative;overflow:hidden;border-radius:4px;
+  box-shadow:0 14px 40px rgba(46,46,43,.16);
 }
 .lots-img-wrap img{width:100%;display:block;transition:transform .5s var(--ease)}
 .lots-img-wrap:hover img{transform:scale(1.04)}
@@ -627,7 +628,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .timeline-item:nth-child(even) .timeline-content:last-child{order:1;text-align:right}
 /* Timeline images filling the opposite column */
 .timeline-img{
-  overflow:hidden;border:1px solid rgba(255,255,255,.12);
+  overflow:hidden;
   height:240px;box-shadow:0 10px 36px rgba(0,0,0,.28);border-radius:4px;
 }
 .timeline-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
@@ -666,14 +667,14 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 /* Ken Burns — gentle continuous drift, alternating direction.
    Pauses on hover so the user-driven zoom takes over cleanly. */
 @keyframes kenburns-a{
-  0%{transform:scale(1.04) translate(0,0)}
-  50%{transform:scale(1.12) translate(-1.5%,-1%)}
-  100%{transform:scale(1.04) translate(0,0)}
+  0%{transform:scale(1.1) translate(0,0)}
+  50%{transform:scale(1.16) translate(-1%,-0.8%)}
+  100%{transform:scale(1.1) translate(0,0)}
 }
 @keyframes kenburns-b{
-  0%{transform:scale(1.08) translate(1%,1%)}
-  50%{transform:scale(1.02) translate(0,0)}
-  100%{transform:scale(1.08) translate(1%,1%)}
+  0%{transform:scale(1.16) translate(-1%,-0.8%)}
+  50%{transform:scale(1.1) translate(0,0)}
+  100%{transform:scale(1.16) translate(-1%,-0.8%)}
 }
 .gallery-item.kb img{animation:kenburns-a 22s ease-in-out infinite}
 .gallery-item.kb:nth-child(even) img{animation-name:kenburns-b;animation-duration:26s}
