@@ -303,7 +303,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   overflow:hidden;background:#1d2f29;
   cursor:zoom-in;
 }
-.plat-map-frame img{width:100%;display:block;transition:transform .4s var(--ease)}
+.plat-map-frame img{width:100%;display:block;transition:transform .4s var(--ease);clip-path:inset(0 1.5% 0 0)}
 .plat-map-frame:hover img{transform:scale(1.02)}
 .plat-map-hint{
   position:absolute;bottom:1rem;left:1rem;
@@ -352,7 +352,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   position:relative;overflow:hidden;
   border:3px solid var(--gold-pale);
 }
-.lots-img-wrap img{width:100%;display:block;transition:transform .5s var(--ease)}
+.lots-img-wrap img{width:100%;display:block;transition:transform .5s var(--ease);clip-path:inset(0 1.5% 0 0)}
 .lots-img-wrap:hover img{transform:scale(1.04)}
 .lots-badge{
   position:absolute;bottom:-1.5rem;right:-1.5rem;
@@ -412,7 +412,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 #commercial{background:var(--cream-dark);padding:100px 0}
 .commercial-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:6rem;align-items:start}
 .commercial-img{position:relative;overflow:hidden}
-.commercial-img img{width:100%;display:block;transition:transform .5s var(--ease)}
+.commercial-img img{width:100%;display:block;transition:transform .5s var(--ease);clip-path:inset(0 1.5% 0 0)}
 .commercial-img:hover img{transform:scale(1.04)}
 .traffic-badge{
   position:absolute;top:1.5rem;right:1.5rem;
@@ -521,6 +521,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   width:100%;height:100%;object-fit:cover;
   transition:transform .5s var(--ease),filter .4s;
   filter:brightness(.92);
+  clip-path:inset(0 1.5% 0 0);
 }
 .gallery-item:hover img{transform:scale(1.07);filter:brightness(1)}
 .gallery-overlay{
@@ -555,7 +556,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 #lightbox.open{display:flex}
 .lb-inner{position:relative;max-width:1100px;width:100%;max-height:90vh}
 #lb-img{max-width:100%;max-height:80vh;object-fit:contain;display:block;margin:0 auto;
-  box-shadow:0 20px 80px rgba(0,0,0,.6)}
+  box-shadow:0 20px 80px rgba(0,0,0,.6);clip-path:inset(0 1.5% 0 0)}
 .lb-close{
   position:absolute;top:-3rem;right:0;
   background:none;border:none;color:var(--white);
@@ -1061,9 +1062,9 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
     </div>
     <!-- Aerial image strip -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:3rem" class="reveal reveal-d2">
-      <div style="overflow:hidden;height:320px"><img src="assets/gallery/residential-aerial-wide.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Residential aerial view" loading="lazy"/></div>
-      <div style="overflow:hidden;height:320px"><img src="assets/gallery/phase-a-context-retail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A context with nearby retail" loading="lazy"/></div>
-      <div style="overflow:hidden;height:320px"><img src="assets/gallery/phase-b-context-retail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B context with nearby retail and medical" loading="lazy"/></div>
+      <div style="overflow:hidden;height:320px"><img src="assets/gallery/residential-aerial-wide.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Residential aerial view" loading="lazy"/></div>
+      <div style="overflow:hidden;height:320px"><img src="assets/gallery/phase-a-context-retail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A context with nearby retail" loading="lazy"/></div>
+      <div style="overflow:hidden;height:320px"><img src="assets/gallery/phase-b-context-retail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B context with nearby retail and medical" loading="lazy"/></div>
     </div>
   </div>
 </section>
@@ -1113,12 +1114,12 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
-          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-a-detail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A lot detail with acreage" loading="lazy"/></div>
-          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-b-detail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B lot detail with acreage" loading="lazy"/></div>
+          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-a-detail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A lot detail with acreage" loading="lazy"/></div>
+          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-b-detail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B lot detail with acreage" loading="lazy"/></div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
-          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-a-ground-level.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A ground level view" loading="lazy"/></div>
-          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-b-ground-level.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B ground level view with retail context" loading="lazy"/></div>
+          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-a-ground-level.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A ground level view" loading="lazy"/></div>
+          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-b-ground-level.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B ground level view with retail context" loading="lazy"/></div>
         </div>
       </div>
     </div>
