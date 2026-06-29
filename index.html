@@ -133,25 +133,25 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .nav-inner{
   max-width:1240px;margin:0 auto;
   display:flex;align-items:center;justify-content:space-between;
-  height:76px;
+  height:96px;
 }
 .nav-logo{text-decoration:none;line-height:1;display:flex;align-items:center;gap:.7rem}
-.nav-logo-mark{height:42px;width:auto;display:block;flex-shrink:0}
+.nav-logo-mark{height:60px;width:auto;display:block;flex-shrink:0}
 .nav-logo-text{display:flex;flex-direction:column}
 .nav-logo-top{
-  font-family:var(--serif);font-size:1.4rem;font-weight:600;
+  font-family:var(--serif);font-size:1.65rem;font-weight:600;
   letter-spacing:.04em;color:var(--white);display:block;line-height:1;
 }
 .nav-logo-top span{color:var(--white)}
 .nav-logo-sub{
-  font-size:.48rem;font-weight:600;letter-spacing:.24em;
-  text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:3px;display:block;
+  font-size:.55rem;font-weight:600;letter-spacing:.24em;
+  text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px;display:block;
   white-space:nowrap;
 }
 .nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
 .nav-links a{
-  font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
-  text-decoration:none;color:rgba(255,255,255,.82);
+  font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--sand);
   transition:color .25s;position:relative;padding-bottom:2px;
 }
 .nav-links a::after{
@@ -257,7 +257,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 /* Stats ribbon */
 .hero-stats-bar{
   position:absolute;bottom:0;left:0;right:0;z-index:3;
-  background:rgba(95,125,138,.96);backdrop-filter:blur(8px);
+  background:rgba(183,123,90,.96);backdrop-filter:blur(8px);
 }
 .hero-stats-inner{
   max-width:1240px;margin:0 auto;padding:0 2rem;
@@ -274,7 +274,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 }
 .hero-stat-label{
   font-size:.65rem;font-weight:600;letter-spacing:.15em;
-  text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:.3rem;
+  text-transform:uppercase;color:rgba(255,255,255,.95);margin-top:.3rem;
 }
 
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
@@ -843,7 +843,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
-      <img src="assets/logo-mark.png" alt="San Sebastian" class="nav-logo-mark"/>
+      <img src="assets/logo-mark-cream.png" alt="San Sebastian" class="nav-logo-mark"/>
       <span class="nav-logo-text">
         <span class="nav-logo-top">San Sebastian</span>
         <span class="nav-logo-sub">A Modern Community · San Benito, TX</span>
@@ -897,10 +897,6 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
         <span class="play-icon">▶</span> Watch Video
       </a>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-arrow"></div>
   </div>
   <div class="hero-stats-bar">
     <div class="hero-stats-inner">
