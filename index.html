@@ -1062,9 +1062,9 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
     </div>
     <!-- Aerial image strip -->
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:3rem" class="reveal reveal-d2">
-      <div style="overflow:hidden;height:320px"><img src="assets/gallery/residential-aerial-wide.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Residential aerial view" loading="lazy"/></div>
-      <div style="overflow:hidden;height:320px"><img src="assets/gallery/phase-a-context-retail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A context with nearby retail" loading="lazy"/></div>
-      <div style="overflow:hidden;height:320px"><img src="assets/gallery/phase-b-context-retail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B context with nearby retail and medical" loading="lazy"/></div>
+      <div style="overflow:hidden;height:320px"><img src="assets/gallery/amenity-soccer-field.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Community soccer field" loading="lazy"/></div>
+      <div style="overflow:hidden;height:320px"><img src="assets/gallery/amenity-playground-swings.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Children's playground with swings" loading="lazy"/></div>
+      <div style="overflow:hidden;height:320px"><img src="assets/gallery/amenity-dogpark-shade.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" alt="Dog-friendly park with agility equipment" loading="lazy"/></div>
     </div>
   </div>
 </section>
@@ -1211,6 +1211,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
       <button class="gf-btn active" onclick="filterGallery(this,'all')">All Photos</button>
       <button class="gf-btn" onclick="filterGallery(this,'aerial')">Aerial Views</button>
       <button class="gf-btn" onclick="filterGallery(this,'rendering')">Renderings</button>
+      <button class="gf-btn" onclick="filterGallery(this,'amenity')">Amenities</button>
     </div>
     <div class="gallery-grid" id="galleryGrid">
       <!-- Row 1: wide-tall (hero-labeled) + wide (commercial-corridor) -->
@@ -1309,6 +1310,39 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
       <div class="gallery-item span-all" data-cat="rendering" data-src="assets/gallery/rendering-commercial-siteplan.jpg" data-caption="Conceptual commercial site plan — Buildings A–F with suite layouts and parking (rendering by Raine Architects; final design may vary)">
         <img src="assets/gallery/rendering-commercial-siteplan.jpg" alt="Conceptual commercial site plan showing buildings A through F" loading="lazy"/>
         <div class="gallery-overlay"><span class="gallery-overlay-text">Commercial Site Plan</span></div>
+        <div class="gallery-zoom">+</div>
+      </div>
+      <!-- Amenity renderings — community lifestyle (conceptual) -->
+      <!-- Row 1: wide dog park (2) + 2 normal = 4 cols -->
+      <div class="gallery-item wide" data-cat="amenity" data-src="assets/gallery/amenity-dogpark-shade.jpg" data-caption="Conceptual rendering — shaded dog park with agility equipment (final design may vary)">
+        <img src="assets/gallery/amenity-dogpark-shade.jpg" alt="Dog park with shade trees and agility equipment" loading="lazy"/>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Dog Park</span></div>
+        <div class="gallery-zoom">+</div>
+      </div>
+      <div class="gallery-item" data-cat="amenity" data-src="assets/gallery/amenity-soccer-field.jpg" data-caption="Conceptual rendering — community soccer field with picnic areas (final design may vary)">
+        <img src="assets/gallery/amenity-soccer-field.jpg" alt="Community soccer field" loading="lazy"/>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Soccer Field</span></div>
+        <div class="gallery-zoom">+</div>
+      </div>
+      <div class="gallery-item" data-cat="amenity" data-src="assets/gallery/amenity-playground-swings.jpg" data-caption="Conceptual rendering — children's playground with swings and climbers (final design may vary)">
+        <img src="assets/gallery/amenity-playground-swings.jpg" alt="Children's playground with swings" loading="lazy"/>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Playground</span></div>
+        <div class="gallery-zoom">+</div>
+      </div>
+      <!-- Row 2: 2 normal + wide dog park (2) = 4 cols -->
+      <div class="gallery-item" data-cat="amenity" data-src="assets/gallery/amenity-basketball-court.jpg" data-caption="Conceptual rendering — basketball court with soccer fields beyond (final design may vary)">
+        <img src="assets/gallery/amenity-basketball-court.jpg" alt="Basketball court" loading="lazy"/>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Basketball Court</span></div>
+        <div class="gallery-zoom">+</div>
+      </div>
+      <div class="gallery-item" data-cat="amenity" data-src="assets/gallery/amenity-playground-clubhouse.jpg" data-caption="Conceptual rendering — playground and walking path by the clubhouse (final design may vary)">
+        <img src="assets/gallery/amenity-playground-clubhouse.jpg" alt="Playground and walking path near clubhouse" loading="lazy"/>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Walking Trails</span></div>
+        <div class="gallery-zoom">+</div>
+      </div>
+      <div class="gallery-item wide" data-cat="amenity" data-src="assets/gallery/amenity-dogpark-agility.jpg" data-caption="Conceptual rendering — dog park agility course with seating (final design may vary)">
+        <img src="assets/gallery/amenity-dogpark-agility.jpg" alt="Dog park agility course" loading="lazy"/>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Dog Agility Course</span></div>
         <div class="gallery-zoom">+</div>
       </div>
     </div>
