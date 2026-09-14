@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>San Sebastian — A Modern Community | San Benito, Texas</title>
-<meta name="description" content="San Sebastian — a modern master-planned community in San Benito, TX. 185 residential lots, 8 commercial pad sites on Highway 77, parks, trails, and resort amenities. Rooted in life. Designed for tomorrow."/>
+<meta name="description" content="San Sebastian — a modern master-planned community in San Benito, TX. 185 residential lots, 8 commercial pad sites on Business 77, parks, trails, and resort amenities. Rooted in life. Designed for tomorrow."/>
 
 <!-- Open Graph / social share -->
 <meta property="og:type" content="website"/>
@@ -821,6 +821,9 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
   .hamburger{display:flex}
   .hero-stats-inner{grid-template-columns:1fr 1fr}
   .hero-stat:nth-child(2){border-right:none}
+  #hero{flex-direction:column;justify-content:flex-end}
+  .hero-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:130px 2rem 56px}
+  .hero-stats-bar{position:relative;width:100%;align-self:stretch;backdrop-filter:none}
   .amenity-cards{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:180px}
   .gallery-item.wide{grid-column:span 1}
@@ -885,7 +888,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
   <div class="lb-inner">
     <button class="lb-close" id="lbClose">✕</button>
     <button class="lb-prev" id="lbPrev">&#8249;</button>
-    <img id="lb-img" src="" alt="Gallery Image"/>
+    <img id="lb-img" alt="Gallery Image"/>
     <button class="lb-next" id="lbNext">&#8250;</button>
     <div class="lb-counter" id="lbCounter"></div>
     <div class="lb-caption" id="lbCaption"></div>
@@ -906,7 +909,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
     <p class="hero-welcome">Welcome To</p>
     <h1 class="hero-title">San Sebastian<br/><span>A Modern Community</span></h1>
     <p class="hero-location">Rooted in life. Designed for tomorrow. — San Benito, Texas</p>
-    <p class="hero-desc">A master-planned community blending modern South Texas living with everyday convenience. Find your home among 185 thoughtfully planned residential lots, or position your business on one of eight commercial pad sites fronting Highway 77 — with parks, trails, and shared spaces designed to bring neighbors together.</p>
+    <p class="hero-desc">A master-planned community blending modern South Texas living with everyday convenience. Find your home among 185 thoughtfully planned residential lots, or position your business on one of eight commercial pad sites fronting Business 77 — with parks, trails, and shared spaces designed to bring neighbors together.</p>
     <div class="hero-btns">
       <a href="#contact" class="btn btn-gold">Contact Us</a>
       <a href="#videoModal" onclick="openVideoModal(); return false;" class="btn btn-outline-white">
@@ -946,7 +949,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
         <span class="eyebrow reveal">The Master Plan</span>
         <h2 class="section-title white reveal reveal-d1">San Sebastian <em>Site Plan</em></h2>
         <span class="divider-gold reveal reveal-d1"></span>
-        <p class="section-body white reveal reveal-d2">A carefully designed plan that delivers three residential phases and a prime commercial corridor along Highway 77. Each phase is laid out to maximize livability, green space, and connection throughout the community — modern South Texas living, reimagined.</p>
+        <p class="section-body white reveal reveal-d2">A carefully designed plan that delivers three residential phases and a prime commercial corridor along Business 77. Each phase is laid out to maximize livability, green space, and connection throughout the community — modern South Texas living, reimagined.</p>
         <div class="phase-tabs reveal reveal-d3">
           <button class="phase-tab active" onclick="setPhase(this,'Phase One')">Phase One</button>
           <button class="phase-tab phase-two" onclick="setPhase(this,'Phase Two')">Phase Two</button>
@@ -997,7 +1000,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
         </div>
         <div class="lots-badge">
           <div class="lots-badge-num">185</div>
-          <div class="lots-badge-txt">Residential<br/>Lots Available</div>
+          <div class="lots-badge-txt">Total<br/>Residential Lots</div>
         </div>
       </div>
       <div style="padding-bottom:2rem">
@@ -1036,7 +1039,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
           </div>
         </div>
         <div class="lots-btns reveal reveal-d4">
-          <a href="https://flourishing-entremet-82a2a4.netlify.app/" target="_blank" rel="noopener" class="btn btn-gold">View Currently Available Lots</a>
+          <a href="https://subdivision-plat-app.vercel.app/c/san-sebastian-mpc" target="_blank" rel="noopener" class="btn btn-gold">View Currently Available Lots</a>
           <a href="assets/san-sebastian-final-plat.pdf" class="btn btn-outline-navy" download="San-Sebastian-Final-Plat.pdf">Download Plan</a>
         </div>
       </div>
@@ -1122,7 +1125,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
           <img src="assets/gallery/commercial-corridor-wide.jpg" alt="San Sebastian commercial corridor showing 8 commercial pad sites with acreage and surrounding national retailers" loading="lazy"/>
           <div class="traffic-badge">
             <div class="traffic-badge-num">24,000</div>
-            <div class="traffic-badge-lbl">Vehicles/Day<br/>Hwy 77</div>
+            <div class="traffic-badge-lbl">Vehicles/Day<br/>Business 77</div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
@@ -1376,7 +1379,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
           <div class="vf-item"><div class="vf-dot"></div><span class="vf-text">Aerial drone footage of the full 47-acre development</span></div>
           <div class="vf-item"><div class="vf-dot"></div><span class="vf-text">Walkthrough of lot layouts and phase roadmaps</span></div>
           <div class="vf-item"><div class="vf-dot"></div><span class="vf-text">Community amenities and lifestyle highlights</span></div>
-          <div class="vf-item"><div class="vf-dot"></div><span class="vf-text">Commercial corridor visibility along Hwy 77</span></div>
+          <div class="vf-item"><div class="vf-dot"></div><span class="vf-text">Commercial corridor visibility along Business 77</span></div>
         </div>
         <div style="margin-top:2rem" class="reveal reveal-d4">
           <a href="#contact" class="btn btn-gold">Schedule a Site Tour</a>
@@ -1578,25 +1581,25 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
             <input type="text" name="_honey" value="" autocomplete="off" tabindex="-1" style="display:none"/>
             <div class="form-row">
               <div class="fg">
-                <label class="fl">First Name</label>
-                <input type="text" class="fi" name="first_name" placeholder="Maria" required/>
+                <label class="fl" for="c-first_name">First Name</label>
+                <input type="text" class="fi" id="c-first_name" name="first_name" placeholder="Maria" required/>
               </div>
               <div class="fg">
-                <label class="fl">Last Name</label>
-                <input type="text" class="fi" name="last_name" placeholder="Garcia" required/>
+                <label class="fl" for="c-last_name">Last Name</label>
+                <input type="text" class="fi" id="c-last_name" name="last_name" placeholder="Garcia" required/>
               </div>
             </div>
             <div class="fg">
-              <label class="fl">Email Address</label>
-              <input type="email" class="fi" name="email" placeholder="maria@example.com" required/>
+              <label class="fl" for="c-email">Email Address</label>
+              <input type="email" class="fi" id="c-email" name="email" placeholder="maria@example.com" required/>
             </div>
             <div class="fg">
-              <label class="fl">Phone Number</label>
-              <input type="tel" class="fi" name="phone" placeholder="(956) 555-0000"/>
+              <label class="fl" for="c-phone">Phone Number</label>
+              <input type="tel" class="fi" id="c-phone" name="phone" placeholder="(956) 555-0000"/>
             </div>
             <div class="fg">
-              <label class="fl">Message</label>
-              <textarea class="ft fi" name="message" placeholder="Tell us about your interest in the commercial pad sites..."></textarea>
+              <label class="fl" for="c-message">Message</label>
+              <textarea class="ft fi" id="c-message" name="message" placeholder="Tell us about your interest in the commercial pad sites..."></textarea>
             </div>
             <button type="submit" class="form-submit">Send Message →</button>
             <div class="form-error">
@@ -1640,25 +1643,25 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
             <input type="text" name="_honey" value="" autocomplete="off" tabindex="-1" style="display:none"/>
             <div class="form-row">
               <div class="fg">
-                <label class="fl">First Name</label>
-                <input type="text" class="fi" name="first_name" placeholder="Maria" required/>
+                <label class="fl" for="r-first_name">First Name</label>
+                <input type="text" class="fi" id="r-first_name" name="first_name" placeholder="Maria" required/>
               </div>
               <div class="fg">
-                <label class="fl">Last Name</label>
-                <input type="text" class="fi" name="last_name" placeholder="Garcia" required/>
+                <label class="fl" for="r-last_name">Last Name</label>
+                <input type="text" class="fi" id="r-last_name" name="last_name" placeholder="Garcia" required/>
               </div>
             </div>
             <div class="fg">
-              <label class="fl">Email Address</label>
-              <input type="email" class="fi" name="email" placeholder="maria@example.com" required/>
+              <label class="fl" for="r-email">Email Address</label>
+              <input type="email" class="fi" id="r-email" name="email" placeholder="maria@example.com" required/>
             </div>
             <div class="fg">
-              <label class="fl">Phone Number</label>
-              <input type="tel" class="fi" name="phone" placeholder="(956) 555-0000"/>
+              <label class="fl" for="r-phone">Phone Number</label>
+              <input type="tel" class="fi" id="r-phone" name="phone" placeholder="(956) 555-0000"/>
             </div>
             <div class="fg">
-              <label class="fl">I'm Interested In</label>
-              <select class="fi fs" name="interest" required>
+              <label class="fl" for="r-interest">I'm Interested In</label>
+              <select class="fi fs" id="r-interest" name="interest" required>
                 <option value="">Select an option</option>
                 <option value="Residential Lot (Phase 1 - Now Selling)">Residential Lot (Phase 1 - Now Selling)</option>
                 <option value="Residential Lot (Phase 2 - Now Selling)">Residential Lot (Phase 2 - Now Selling)</option>
@@ -1667,8 +1670,8 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
               </select>
             </div>
             <div class="fg">
-              <label class="fl">Message</label>
-              <textarea class="ft fi" name="message" placeholder="Tell us about your interest in residential lots..."></textarea>
+              <label class="fl" for="r-message">Message</label>
+              <textarea class="ft fi" id="r-message" name="message" placeholder="Tell us about your interest in residential lots..."></textarea>
             </div>
             <button type="submit" class="form-submit">Send Message →</button>
             <div class="form-error">
@@ -1719,8 +1722,8 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
           <li><a href="tel:9563228001">(956) 322-8001 — Office</a></li>
           <li><a href="tel:9563224001">(956) 322-4001 — Cell</a></li>
           <li><a href="mailto:mark.hanna@svn.com">mark.hanna@svn.com</a></li>
-          <li><a href="#">322–326 FM1846</a></li>
-          <li><a href="#">San Benito, TX 78586</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=322+FM1846+San+Benito+TX+78586" target="_blank" rel="noopener">322–326 FM1846</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=322+FM1846+San+Benito+TX+78586" target="_blank" rel="noopener">San Benito, TX 78586</a></li>
         </ul>
       </div>
       <div>
@@ -1736,9 +1739,7 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 SVN | Hanna Solutions Commercial Real Estate. All rights reserved. Equal Housing Opportunity. Prices, plans, and availability subject to change without notice.</p>
       <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Fair Housing</a>
+        <a href="https://www.hud.gov/program_offices/fair_housing_equal_opp" target="_blank" rel="noopener">Fair Housing</a>
       </div>
     </div>
   </div>
@@ -1854,9 +1855,11 @@ window.addEventListener('scroll',()=>{
 const hamburger = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
 const mobileClose = document.getElementById('mobileClose');
-hamburger.addEventListener('click',()=>mobileNav.classList.add('open'));
-mobileClose.addEventListener('click',()=>mobileNav.classList.remove('open'));
-function closeMobile(){mobileNav.classList.remove('open')}
+function openMobile(){mobileNav.classList.add('open');document.body.style.overflow='hidden'}
+function closeMobile(){mobileNav.classList.remove('open');document.body.style.overflow=''}
+hamburger.addEventListener('click',openMobile);
+mobileClose.addEventListener('click',closeMobile);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mobileNav.classList.contains('open'))closeMobile()});
 
 /* ── SMOOTH SCROLL ── */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
@@ -1864,7 +1867,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const t=document.querySelector(a.getAttribute('href'));
     if(!t)return;
     e.preventDefault();
-    window.scrollTo({top:t.offsetTop-76,behavior:'smooth'});
+    const navH=navbar.offsetHeight||96;
+    window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-navH+1,behavior:'smooth'});
   });
 });
 
@@ -1922,8 +1926,10 @@ function setPhase(btn,phase){
 /* ── GALLERY LIGHTBOX ── */
 const allItems = Array.from(document.querySelectorAll('.gallery-item'));
 let currentIndex=0;
+let platMode=false;
 
 function openLightbox(index){
+  platMode=false;
   currentIndex=index;
   const item=allItems[index];
   document.getElementById('lb-img').src=item.getAttribute('data-src');
@@ -1942,6 +1948,7 @@ function closeLightbox(){
 }
 
 function lbNav(dir){
+  if(platMode)return;
   currentIndex=(currentIndex+dir+allItems.length)%allItems.length;
   const item=allItems[currentIndex];
   const img=document.getElementById('lb-img');
@@ -1962,6 +1969,7 @@ allItems.forEach((item,i)=>{
 
 /* ── STANDALONE PLAT LIGHTBOX (not part of gallery loop) ── */
 function openPlatLightbox(){
+  platMode=true;
   const img=document.getElementById('lb-img');
   img.src='assets/gallery/official-site-plan.jpg';
   img.alt='San Sebastian Official Site Plan';
