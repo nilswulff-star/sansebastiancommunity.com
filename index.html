@@ -22,6 +22,75 @@
 <meta name="twitter:image" content="https://sansebastiancommunity.com/assets/og-image.jpg"/>
 <link rel="canonical" href="https://sansebastiancommunity.com/"/>
 <link rel="icon" type="image/png" href="assets/favicon.png"/>
+<link rel="apple-touch-icon" href="assets/favicon.png"/>
+<meta name="theme-color" content="#243B34"/>
+<link rel="preload" as="image" href="assets/hero-still.jpg" fetchpriority="high"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateListing",
+      "@id": "https://sansebastiancommunity.com/#listing",
+      "url": "https://sansebastiancommunity.com/",
+      "name": "San Sebastian — A Modern Community",
+      "description": "A 47.35-acre master-planned community in San Benito, Texas, with 185 residential lots and 8 commercial pad sites fronting W Business 77.",
+      "datePosted": "2026-09-15",
+      "image": "https://sansebastiancommunity.com/assets/og-image.jpg",
+      "about": {"@id": "https://sansebastiancommunity.com/#place"},
+      "provider": {"@id": "https://sansebastiancommunity.com/#broker"}
+    },
+    {
+      "@type": "Place",
+      "@id": "https://sansebastiancommunity.com/#place",
+      "name": "San Sebastian",
+      "description": "Master-planned community of 185 residential lots and 8 commercial pad sites on 47.35 acres fronting W Business 77 in San Benito, Cameron County, Texas.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Benito",
+        "addressRegion": "TX",
+        "postalCode": "78586",
+        "addressCountry": "US"
+      },
+      "geo": {"@type": "GeoCoordinates", "latitude": 26.156937, "longitude": -97.647051},
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=26.156937,-97.647051",
+      "additionalProperty": [
+        {"@type": "PropertyValue", "name": "Total acreage", "value": "47.35 acres"},
+        {"@type": "PropertyValue", "name": "Residential lots", "value": 185},
+        {"@type": "PropertyValue", "name": "Commercial pad sites", "value": 8},
+        {"@type": "PropertyValue", "name": "Commercial pad size range", "value": "1.01 to 1.60 acres"},
+        {"@type": "PropertyValue", "name": "Residential lot size range", "value": "4,711 to 15,167 sq ft"},
+        {"@type": "PropertyValue", "name": "Frontage", "value": "W Business 77"},
+        {"@type": "PropertyValue", "name": "Business 77 traffic count", "value": "21,900 AADT (TxDOT, 2025)"}
+      ]
+    },
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://sansebastiancommunity.com/#broker",
+      "name": "SVN | Hanna Solutions Commercial Real Estate",
+      "description": "Exclusive listing broker for the San Sebastian commercial pad sites.",
+      "telephone": "+1-956-322-8001",
+      "email": "mark.hanna@svn.com",
+      "image": "https://sansebastiancommunity.com/assets/svn-logo.png",
+      "areaServed": {"@type": "AdministrativeArea", "name": "Rio Grande Valley, Texas"},
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Benito",
+        "addressRegion": "TX",
+        "postalCode": "78586",
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sansebastiancommunity.com/#website",
+      "url": "https://sansebastiancommunity.com/",
+      "name": "San Sebastian — A Modern Community",
+      "publisher": {"@id": "https://sansebastiancommunity.com/#broker"}
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
@@ -208,7 +277,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 }
 .hero-bg{
   position:absolute;inset:0;
-  background:url('assets/gallery/aerial-hero-labeled.jpg') center/cover no-repeat;
+  background:url('assets/hero-still.jpg') center/cover no-repeat;
   transform-origin:center;transition:transform .1s linear;
 }
 .hero-overlay{
@@ -948,9 +1017,8 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 ══════════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-bg" id="heroBg" aria-hidden="true">
-    <video id="heroVideo" autoplay muted loop playsinline preload="metadata" disablepictureinpicture>
-      <source src="assets/hero-background.mp4" type="video/mp4"/>
-    </video>
+    <video id="heroVideo" autoplay muted loop playsinline preload="none" disablepictureinpicture
+           data-src="assets/hero-background.mp4"></video>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -1439,8 +1507,11 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
           <div class="video-frame-corner vfc-tr"></div>
           <div class="video-frame-corner vfc-bl"></div>
           <div class="video-frame-corner vfc-br"></div>
-          <video controls playsinline preload="metadata" title="San Sebastian — A Modern Community" style="width:100%;aspect-ratio:16/9;display:block;border:none;min-height:280px;background:#000;">
-            <source src="assets/hero-video.mp4" type="video/mp4"/>
+          <video id="showcaseVideo" controls playsinline preload="none"
+                 poster="assets/hero-video-poster.jpg"
+                 title="San Sebastian — A Modern Community"
+                 data-src="assets/hero-video.mp4"
+                 style="width:100%;aspect-ratio:16/9;display:block;border:none;min-height:280px;background:#000;">
           </video>
         </div>
       </div>
@@ -1865,8 +1936,10 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
   <button onclick="closeVideoModal()" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.8;">✕</button>
   <div style="width:100%;max-width:960px;position:relative;">
     <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-      <video id="videoModalPlayer" controls playsinline preload="metadata" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;background:#000;">
-        <source src="assets/hero-video.mp4" type="video/mp4"/>
+      <video id="videoModalPlayer" controls playsinline preload="none"
+             poster="assets/hero-video-poster.jpg"
+             data-src="assets/hero-video.mp4"
+             style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;background:#000;">
       </video>
     </div>
   </div>
@@ -1878,6 +1951,13 @@ function openVideoModal(){
   const modal = document.getElementById('videoModal');
   const player = document.getElementById('videoModalPlayer');
   if(player){
+    if(!player.querySelector('source')){
+      const sourceEl=document.createElement('source');
+      sourceEl.src=player.getAttribute('data-src');
+      sourceEl.type='video/mp4';
+      player.appendChild(sourceEl);
+      player.load();
+    }
     player.currentTime = 0;
     player.play().catch(()=>{});
   }
@@ -1898,8 +1978,91 @@ document.addEventListener('keydown', function(e){
   if(e.key === 'Escape' && document.getElementById('videoModal').style.display === 'flex') closeVideoModal();
 });
 
+
+/* ══════════════════════════════════════════
+   ANALYTICS
+   Set GA_MEASUREMENT_ID to your GA4 ID (looks like 'G-XXXXXXXXXX') to switch this on.
+   While it is empty NOTHING is loaded and no request is made — no script, no cookie,
+   no network call. Visitors sending a Do Not Track signal are excluded either way.
+   Events tracked are the ones that matter for a listing: enquiries, calls, emails,
+   brochure downloads, lot-map and tour clicks, video plays and scroll depth.
+══════════════════════════════════════════ */
+const GA_MEASUREMENT_ID = '';
+
+const analyticsEnabled = (function(){
+  if(!GA_MEASUREMENT_ID) return false;
+  const dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+  if(dnt === '1' || dnt === 'yes') return false;
+  return true;
+})();
+
+function track(name, params){
+  if(!analyticsEnabled || typeof gtag !== 'function') return;
+  try{ gtag('event', name, params || {}); }catch(e){}
+}
+
+if(analyticsEnabled){
+  const gs = document.createElement('script');
+  gs.async = true;
+  gs.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+  document.head.appendChild(gs);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', GA_MEASUREMENT_ID, {anonymize_ip: true, allow_google_signals: false, allow_ad_personalization_signals: false});
+}
+
+/* ── Outbound, contact and download tracking ── */
+document.addEventListener('click', function(e){
+  const a = e.target.closest('a');
+  if(!a) return;
+  const href = a.getAttribute('href') || '';
+
+  if(href.startsWith('tel:'))    track('contact_call',  {method:'phone', phone_number:href.replace('tel:','')});
+  else if(href.startsWith('mailto:')) track('contact_email', {method:'email', email_address:href.replace('mailto:','')});
+  else if(href.endsWith('.pdf') || a.hasAttribute('download'))
+    track('file_download', {file_name:href.split('/').pop(), link_text:a.textContent.trim().slice(0,60)});
+  else if(href.includes('subdivision-plat-app'))  track('lot_map_open',     {link_text:a.textContent.trim().slice(0,60)});
+  else if(href.includes('rainearchitects'))       track('virtual_tour_open',{link_text:a.textContent.trim().slice(0,60)});
+  else if(href.includes('svnhannasolutionscre'))  track('listing_open',     {link_text:a.textContent.trim().slice(0,60)});
+  else if(href.includes('instagram.com'))         track('social_click',     {network:'instagram'});
+  else if(/^https?:/i.test(href) && !href.includes('sansebastiancommunity.com'))
+    track('outbound_click', {link_url:href, link_text:a.textContent.trim().slice(0,60)});
+}, {passive:true});
+
+/* ── Section engagement: which parts of the page actually get seen ── */
+if('IntersectionObserver' in window){
+  const seen = new Set();
+  const sectionObs = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting && !seen.has(en.target.id)){
+        seen.add(en.target.id);
+        track('section_view', {section_id: en.target.id});
+      }
+    });
+  },{threshold:0.45});
+  document.querySelectorAll('section[id]').forEach(sec=>sectionObs.observe(sec));
+}
+
+/* ── Scroll depth ── */
+(function(){
+  const marks=[25,50,75,90]; const fired=new Set();
+  window.addEventListener('scroll', function(){
+    const doc=document.documentElement;
+    const pct=Math.round((window.scrollY+window.innerHeight)/doc.scrollHeight*100);
+    marks.forEach(m=>{ if(pct>=m && !fired.has(m)){ fired.add(m); track('scroll_depth',{percent_scrolled:m}); } });
+  },{passive:true});
+})();
+
+/* ── Video plays ── */
+['showcaseVideo','videoModalPlayer'].forEach(id=>{
+  const v=document.getElementById(id);
+  if(v) v.addEventListener('play',()=>track('video_start',{video_title:'San Sebastian Community Showcase', player:id}),{once:true});
+});
+
 /* ── CONTACT TABS ── */
 function switchContactTab(tab){
+  track('contact_tab_switch', {tab_name: tab});
   document.querySelectorAll('.contact-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.contact-tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.form-success').forEach(s=>s.classList.remove('show'));
@@ -1948,11 +2111,13 @@ async function handleFormSubmit(event, type){
     });
     if(!response.ok) throw new Error('Unable to submit form');
 
+    track('generate_lead', {form_type: type, listing: type === 'commercial' ? 'San Sebastian - Commercial' : 'San Sebastian - Residential'});
     if(successEl) successEl.classList.add('show');
     form.reset();
     if(fullNameField) fullNameField.value = '';
     form.querySelectorAll('.formUrl').forEach(f=>{f.value=window.location.href});
   }catch(error){
+    track('form_error', {form_type: type});
     if(errorEl) errorEl.classList.add('show');
   }finally{
     btn.disabled = false;
@@ -2016,13 +2181,56 @@ const counterObs = new IntersectionObserver(entries=>{
 const statsBar=document.querySelector('.hero-stats-bar');
 if(statsBar)counterObs.observe(statsBar);
 
-/* ── PARALLAX HERO ── */
+/* ── HERO: PARALLAX + CONDITIONAL VIDEO ──
+   The 6.7 MB background video is only attached on large screens where motion is welcome.
+   Phones, reduced-motion users and data-saver users keep the still aerial that .hero-bg
+   already paints, and never download the file. */
 const heroBg=document.getElementById('heroBg');
 const heroVideo=document.getElementById('heroVideo');
-if(heroVideo) heroVideo.play().catch(()=>{});
+
+function attachMedia(el){
+  if(!el) return null;
+  const src=el.getAttribute('data-src');
+  if(src && !el.querySelector('source')){
+    const sourceEl=document.createElement('source');
+    sourceEl.src=src;
+    sourceEl.type='video/mp4';
+    el.appendChild(sourceEl);
+    el.load();
+  }
+  return el;
+}
+
+function shouldPlayHeroVideo(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+  if(window.matchMedia('(max-width: 768px)').matches) return false;
+  const conn=navigator.connection;
+  if(conn && (conn.saveData || /^(slow-)?2g$/.test(conn.effectiveType||''))) return false;
+  return true;
+}
+
+if(heroVideo && shouldPlayHeroVideo()){
+  // Wait for the page to settle so the video never competes with the first paint.
+  const startHero=()=>{
+    heroVideo.addEventListener('canplay',()=>{ heroVideo.play().catch(()=>{}); },{once:true});
+    attachMedia(heroVideo);
+    heroVideo.play().catch(()=>{});
+  };
+  if(document.readyState==='complete') setTimeout(startHero,400);
+  else window.addEventListener('load',()=>setTimeout(startHero,400),{once:true});
+}
+
 window.addEventListener('scroll',()=>{
   if(heroBg) heroBg.style.transform=`translateY(${window.scrollY*.3}px)`;
 },{passive:true});
+
+/* Showcase and modal videos attach their file on first interaction, not on page load. */
+const showcaseVideo=document.getElementById('showcaseVideo');
+if(showcaseVideo){
+  const load=()=>attachMedia(showcaseVideo);
+  showcaseVideo.addEventListener('play',load,{once:true});
+  showcaseVideo.addEventListener('pointerdown',load,{once:true});
+}
 
 /* ── PHASE TABS ── */
 const phaseDescs={
@@ -2031,6 +2239,7 @@ const phaseDescs={
   'Phase Three':'Phase 3 is coming soon — 57 lots completing the 185-lot community, with the primary road extended to West Business 77.'
 };
 function setPhase(btn,phase){
+  track('phase_tab_click', {phase_name: phase});
   document.querySelectorAll('.phase-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   const desc=document.getElementById('phaseDesc');
@@ -2046,6 +2255,7 @@ let platMode=false;
 function openLightbox(index){
   platMode=false;
   currentIndex=index;
+  track('gallery_image_open', {image_name: (allItems[index].getAttribute('data-src')||'').split('/').pop()});
   const item=allItems[index];
   document.getElementById('lb-img').src=item.getAttribute('data-src');
   document.getElementById('lb-img').alt=item.getAttribute('data-caption')||'';
