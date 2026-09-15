@@ -915,6 +915,43 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 .footer-legal a:hover{color:rgba(255,255,255,.5)}
 
 /* ══════════════════════════════════════════
+   STICKY MOBILE CTA
+   Phones only. Appears once the hero is behind you, hides while the contact
+   form is on screen so it never covers the thing it points at.
+══════════════════════════════════════════ */
+#stickyCta{
+  display:none;
+  position:fixed;left:0;right:0;bottom:0;z-index:850;
+  background:rgba(36,59,52,.97);backdrop-filter:blur(12px);
+  border-top:1px solid rgba(214,194,161,.25);
+  padding:.7rem .8rem calc(.7rem + env(safe-area-inset-bottom));
+  transform:translateY(110%);
+  transition:transform .32s var(--ease);
+  box-shadow:0 -4px 24px rgba(0,0,0,.28);
+}
+#stickyCta.visible{transform:translateY(0)}
+.sticky-inner{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;max-width:520px;margin:0 auto}
+.sticky-btn{
+  display:flex;align-items:center;justify-content:center;gap:.45rem;
+  padding:.85rem .5rem;text-decoration:none;
+  font-family:var(--sans);font-size:.72rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:background .2s,transform .15s;
+  border:1.5px solid transparent;
+}
+.sticky-btn:active{transform:scale(.97)}
+.sticky-call{background:transparent;color:var(--white);border-color:rgba(255,255,255,.45)}
+.sticky-enquire{background:var(--gold);color:var(--white)}
+.sticky-icon{font-size:.9rem;line-height:1}
+@media(max-width:768px){
+  #stickyCta{display:block}
+  footer{padding-bottom:5.5rem}
+}
+@media(prefers-reduced-motion: reduce){
+  #stickyCta{transition:none}
+}
+
+/* ══════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════ */
 @media(max-width:1024px){
@@ -1931,6 +1968,14 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
   </div>
 </footer>
 
+<!-- ══ STICKY MOBILE CTA ══ -->
+<div id="stickyCta" aria-label="Quick contact">
+  <div class="sticky-inner">
+    <a href="tel:9563228001" class="sticky-btn sticky-call"><span class="sticky-icon">&#9742;</span> Call</a>
+    <a href="#contact" class="sticky-btn sticky-enquire"><span class="sticky-icon">&#9993;</span> Enquire</a>
+  </div>
+</div>
+
 <!-- VIDEO MODAL -->
 <div id="videoModal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:1rem;">
   <button onclick="closeVideoModal()" style="position:absolute;top:1.5rem;right:2rem;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;opacity:.8;">✕</button>
@@ -2124,6 +2169,34 @@ async function handleFormSubmit(event, type){
     btn.textContent = originalLabel;
   }
 }
+
+/* ── STICKY MOBILE CTA ──
+   Shows after the hero scrolls away; retracts while the contact section is in
+   view so it never sits on top of the form it is pointing at. */
+(function(){
+  const cta=document.getElementById('stickyCta');
+  if(!cta) return;
+  const contact=document.getElementById('contact');
+  let contactVisible=false;
+
+  if('IntersectionObserver' in window && contact){
+    new IntersectionObserver(es=>{
+      es.forEach(e=>{contactVisible=e.isIntersecting; update();});
+    },{threshold:0.12}).observe(contact);
+  }
+  function update(){
+    const past=window.scrollY>window.innerHeight*0.65;
+    cta.classList.toggle('visible', past && !contactVisible);
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
+  update();
+
+  cta.addEventListener('click',e=>{
+    const a=e.target.closest('a');
+    if(a) track('sticky_cta_click',{action:a.classList.contains('sticky-call')?'call':'enquire'});
+  },{passive:true});
+})();
 
 /* ── NAVBAR ── */
 const navbar = document.getElementById('navbar');
