@@ -30,6 +30,7 @@
   --reserved:#E0A93B; --reserved-ink:#5B3F0C;
   --sold:#BDB7AA; --sold-ink:#4A463D;
   --presale:#8FAEBD; --presale-ink:#204151;
+  --commercial:#F86000; --commercial-ink:#3A1600;
   --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',sans-serif;
   --ease:cubic-bezier(.4,0,.2,1);
   --header-h:64px; --bar-h:58px;
@@ -88,6 +89,14 @@ header{
 .chip .dot{width:11px;height:11px;border-radius:2px;flex-shrink:0;border:1px solid rgba(0,0,0,.18)}
 .chip .cnt{opacity:.62;font-weight:500;font-variant-numeric:tabular-nums}
 .bar-sep{width:1px;height:26px;background:var(--gray-light);flex-shrink:0;margin:0 .35rem}
+.key{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:.45rem;
+  padding:.5rem .85rem;font-size:.7rem;font-weight:600;letter-spacing:.04em;
+  background:var(--cream);border:1.5px dashed var(--gray-light);color:var(--gray);
+  white-space:nowrap;cursor:default;
+}
+.key .dot{width:11px;height:11px;border-radius:2px;flex-shrink:0;border:1px solid rgba(0,0,0,.18)}
+.key .cnt{opacity:.7;font-weight:500;font-variant-numeric:tabular-nums}
 .sel{
   flex-shrink:0;padding:.5rem .7rem;font-family:var(--sans);font-size:.7rem;font-weight:600;
   background:var(--cream);border:1.5px solid var(--gray-light);color:var(--charcoal);
@@ -118,7 +127,7 @@ header{
 #plat .lot.reserved{fill:var(--reserved)}
 #plat .lot.sold{fill:var(--sold)}
 #plat .lot.presale{fill:var(--presale)}
-#plat .lot.commercial{stroke-width:1.6}
+#plat .lot.commercial{fill:var(--commercial);stroke-width:1.7}
 #plat .lot.dim{opacity:.16;cursor:default}
 #plat .lot:hover:not(.dim){fill:var(--ink)}
 #plat .lot.sel{fill:var(--ink);stroke:var(--amber);stroke-width:2.6}
@@ -178,6 +187,7 @@ header{
 .lrow.presale{border-left-color:var(--presale)}
 .lrow.reserved{border-left-color:var(--reserved)}
 .lrow.sold{border-left-color:var(--sold);opacity:.62}
+.lrow.is-commercial{border-left-color:var(--commercial);opacity:1}
 .lrow-main{flex:1;min-width:0}
 .lrow-t{font-size:.86rem;font-weight:700;color:var(--charcoal)}
 .lrow-s{font-size:.7rem;color:var(--gray);margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -212,6 +222,7 @@ header{
 .badge.reserved{background:var(--reserved);color:var(--reserved-ink)}
 .badge.sold{background:var(--sold);color:var(--sold-ink)}
 .badge.presale{background:var(--presale);color:var(--presale-ink)}
+.badge.commercial{background:var(--commercial);color:#fff}
 .pc-price{padding:1.2rem 1.6rem;border-bottom:1px solid var(--gray-light)}
 .pc-price-n{font-family:var(--serif);font-size:2.3rem;font-weight:700;color:var(--navy);line-height:1}
 .pc-price-l{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-top:.35rem}
@@ -292,6 +303,7 @@ header{
   <button class="chip" data-status="pre-sale" aria-pressed="true"><span class="dot" style="background:var(--presale)"></span>Pre-Sale <span class="cnt" data-cnt="pre-sale"></span></button>
   <button class="chip" data-status="reserved" aria-pressed="true"><span class="dot" style="background:var(--reserved)"></span>Reserved <span class="cnt" data-cnt="reserved"></span></button>
   <button class="chip" data-status="sold" aria-pressed="true"><span class="dot" style="background:var(--sold)"></span>Sold <span class="cnt" data-cnt="sold"></span></button>
+  <span class="key" title="The eight commercial pad sites fronting W Business 77"><span class="dot" style="background:var(--commercial)"></span>Commercial Pads <span class="cnt" data-cnt="commercial"></span></span>
   <span class="bar-sep"></span>
   <span class="bar-label">Phase</span>
   <select class="sel" id="fPhase" aria-label="Filter by phase">
@@ -559,6 +571,8 @@ function applyFilters(){
 
 function renderCounts(shown){
   const all=LOTS;
+  const comEl=document.querySelector('[data-cnt="commercial"]');
+  if(comEl) comEl.textContent=all.filter(l=>l.kind==='commercial').length;
   ['available','pre-sale','reserved','sold'].forEach(s=>{
     const n=all.filter(l=>l.status===s).length;
     const el=document.querySelector(`[data-cnt="${s}"]`);
@@ -592,7 +606,7 @@ function renderList(){
                l.address||null].filter(Boolean).join(' · ');
     const price=l.price?money(l.price):(isCom?'On request':'—');
     const plabel=l.price?(l.status==='sold'?'Sold at':'List'):(isCom?'Pricing':'');
-    return `<button class="lrow ${cls(l.status)}" data-i="${i}">
+    return `<button class="lrow ${cls(l.status)}${isCom?' is-commercial':''}" data-i="${i}">
       <span class="lrow-main"><span class="lrow-t">${name}</span><span class="lrow-s">${sub}</span></span>
       <span class="lrow-p">${price}${plabel?`<small>${plabel}</small>`:''}</span>
     </button>`;
@@ -619,8 +633,9 @@ function select(i){
   $('pcKind').textContent=isCom?'Commercial Pad Site':('Residential Lot'+(l.phase?' · Phase '+l.phase:''));
   $('pcName').textContent=isCom?('Pad '+l.label.replace('Lot ','')):l.label;
   const b=$('pcBadge');
-  b.className='badge '+cls(l.status);
-  b.innerHTML='<span class="dot" style="background:rgba(0,0,0,.28)"></span>'+(STATUS_LABEL[l.status]||l.status);
+  b.className='badge '+(isCom?'commercial':cls(l.status));
+  b.innerHTML='<span class="dot" style="background:rgba(0,0,0,.28)"></span>'+
+    (isCom ? 'Commercial · '+(STATUS_LABEL[l.status]||l.status) : (STATUS_LABEL[l.status]||l.status));
 
   if(l.price){ $('pcPrice').textContent=money(l.price); $('pcPriceLbl').textContent=l.status==='sold'?'Last list price':'List price'; $('pcPriceWrap').style.display=''; }
   else if(isCom){ $('pcPrice').textContent='On request'; $('pcPriceLbl').textContent='Pricing'; $('pcPriceWrap').style.display=''; }
