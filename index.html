@@ -256,6 +256,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 
   /* accents (replace old gold roles) */
   --gold:#B77B5A;           /* Soft Terracotta — primary warm accent */
+  --amber-solid:#F2B134;    /* High-visibility amber for primary CTAs */
   --gold-light:#C99576;     /* lighter terracotta */
   --gold-pale:#E9D9C7;      /* pale sand tint for borders/chips */
 
@@ -564,7 +565,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 }
 /* High-visibility amber, for buttons that sit on the deep sage sections */
 .btn-highlight{
-  background:#F2B134;color:#23372F;
+  background:var(--amber-solid);color:#23372F;
   box-shadow:0 4px 18px rgba(0,0,0,.28);
 }
 .btn-highlight:hover{
@@ -606,8 +607,11 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 /* ══════════════════════════════════════════
    SECTION 3 — LOTS FOR SALE
 ══════════════════════════════════════════ */
-#lots{background:var(--cream);padding:100px 0}
-.lots-layout{display:grid;grid-template-columns:1.25fr 1fr;gap:5rem;align-items:center}
+#lots{background:var(--cream);padding:112px 0}
+#lots .container{max-width:1340px}
+#lots .section-title{font-size:clamp(2.6rem,4.4vw,4rem)}
+#lots .section-body{font-size:1rem;line-height:1.9;max-width:none}
+.lots-layout{display:grid;grid-template-columns:1.32fr 1fr;gap:3.5rem;align-items:center}
 .lots-visual{position:relative}
 .lots-img-wrap{
   position:relative;overflow:hidden;
@@ -616,25 +620,50 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .lots-img-wrap img{width:100%;display:block;transition:transform .5s var(--ease);clip-path:inset(0 1.5% 0 0)}
 .lots-img-wrap:hover img{transform:scale(1.04)}
 .lots-badge{
-  position:absolute;bottom:-1.5rem;right:-1.5rem;
+  position:absolute;bottom:-1.6rem;right:-1.6rem;
   background:var(--navy);color:var(--white);
-  padding:1.5rem 2rem;width:180px;text-align:center;
+  padding:1.7rem 2.1rem;width:210px;text-align:center;
+  box-shadow:0 10px 34px rgba(36,59,52,.26);
 }
-.lots-badge-num{font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--gold);line-height:1}
-.lots-badge-txt{font-size:.6rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:.3rem}
+.lots-badge-num{font-family:var(--serif);font-size:3.1rem;font-weight:700;color:var(--amber-solid);line-height:1}
+.lots-badge-txt{font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:.4rem}
 .lot-features{
-  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2.2rem 0;
 }
 .lot-feat{
-  display:flex;align-items:flex-start;gap:.8rem;padding:1rem;
-  background:var(--cream-dark);border-left:3px solid var(--gold);
-  transition:background .25s;
+  display:flex;align-items:flex-start;gap:.9rem;padding:1.25rem 1.15rem;
+  background:var(--white);border-left:4px solid var(--gold);
+  box-shadow:0 2px 14px rgba(36,59,52,.06);
+  transition:background .25s,transform .25s var(--ease),box-shadow .25s;
 }
-.lot-feat:hover{background:#DED5C5}
-.lot-feat-icon{font-size:1.2rem;flex-shrink:0;margin-top:.1rem}
-.lot-feat-title{font-size:.78rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
-.lot-feat-body{font-size:.73rem;color:var(--gray);line-height:1.5}
-.lots-btns{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}
+.lot-feat:hover{background:var(--cream-dark);transform:translateY(-3px);box-shadow:0 8px 24px rgba(36,59,52,.11)}
+.lot-feat-icon{font-size:1.45rem;flex-shrink:0;margin-top:.05rem;line-height:1}
+.lot-feat-title{font-size:.86rem;font-weight:700;color:var(--navy);margin-bottom:.25rem}
+.lot-feat-body{font-size:.8rem;color:#5B584F;line-height:1.55}
+
+/* Primary action on the light sections. Amber alone sits too close to cream
+   to read as a button, so a deep sage border gives it its shape back. */
+.btn-amber-solid{
+  background:var(--amber-solid);color:#23372F;
+  border:2px solid var(--navy);
+  box-shadow:0 5px 18px rgba(36,59,52,.18);
+}
+.btn-amber-solid:hover{
+  background:#FFC751;color:#1C2C26;
+  transform:translateY(-2px);box-shadow:0 12px 30px rgba(36,59,52,.26);
+}
+.btn-navy-solid{
+  background:var(--navy);color:var(--white);border:2px solid var(--navy);
+}
+.btn-navy-solid:hover{
+  background:var(--ink);border-color:var(--ink);color:var(--white);
+  transform:translateY(-2px);box-shadow:0 12px 30px rgba(36,59,52,.26);
+}
+.lots-btns{display:flex;flex-direction:column;gap:.85rem;margin-top:1.9rem;max-width:420px}
+.lots-btns .btn{
+  width:100%;justify-content:center;
+  padding:1.25rem 1.6rem;font-size:.86rem;font-weight:700;letter-spacing:.1em;
+}
 
 /* ══════════════════════════════════════════
    SECTION 4 — AMENITIES
@@ -1474,8 +1503,8 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
           </div>
         </div>
         <div class="lots-btns reveal reveal-d4">
-          <a href="lots.html" class="btn btn-gold">View Currently Available Lots</a>
-          <a href="assets/san-sebastian-final-plat.pdf" class="btn btn-outline-navy" download="San-Sebastian-Final-Plat.pdf">Download Plan</a>
+          <a href="lots.html" class="btn btn-amber-solid">View Currently Available Lots &rarr;</a>
+          <a href="assets/san-sebastian-final-plat.pdf" class="btn btn-navy-solid" download="San-Sebastian-Final-Plat.pdf">Download Plat</a>
         </div>
       </div>
     </div>
