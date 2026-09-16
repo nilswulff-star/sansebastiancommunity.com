@@ -426,11 +426,12 @@ function build(){
     LOTS.push(l);
   });
 
+  const padRelabel={'LOT 5':'LOT 1','LOT 6':'LOT 2','LOT 7':'LOT 3','LOT 8':'LOT 4'};
   (DATA.labels||[]).forEach(t=>{
     const el=document.createElementNS(SVGNS,'text');
     el.setAttribute('x',t.x); el.setAttribute('y',t.y);
     el.setAttribute('class','lbl');
-    el.textContent=t.t;
+    el.textContent=padRelabel[t.t.toUpperCase()]||t.t;
     gLbls.appendChild(el);
   });
 
@@ -440,8 +441,10 @@ function build(){
 }
 
 function ariaFor(l){
-  const bits=[l.kind==='commercial'?'Commercial pad '+l.label.replace('Lot ',''):l.label, STATUS_LABEL[l.status]||l.status];
-  if(l.phase) bits.push('Phase '+l.phase);
+  const bits=[l.kind==='commercial'
+    ? 'Commercial pad, Phase '+l.phase+' Lot '+l.n
+    : l.label, STATUS_LABEL[l.status]||l.status];
+  if(l.phase && l.kind!=='commercial') bits.push('Phase '+l.phase);
   if(l.price) bits.push(money(l.price));
   if(l.sqft)  bits.push(num(l.sqft)+' square feet');
   if(l.address) bits.push(l.address);
@@ -550,7 +553,7 @@ function applyFilters(){
   let shown=0;
   LOTS.forEach((l,i)=>{
     let ok=active.has(l.status);
-    if(ok && ph){ ok = ph==='commercial' ? l.kind==='commercial' : (l.kind==='residential' && l.phase===ph); }
+    if(ok && ph){ ok = ph==='commercial' ? l.kind==='commercial' : l.phase===ph; }
     if(ok && pr) ok=inRange(l.price,pr);
     if(ok && sz) ok=inRange(l.sqft,sz);
     l._on=ok; shown+=ok?1:0;
@@ -594,15 +597,18 @@ function renderList(){
   const wrap=$('list'); if(!wrap) return;
   const on=LOTS.filter(l=>l._on);
   const order={available:0,'pre-sale':1,reserved:2,sold:3};
-  on.sort((a,b)=>(order[a.status]-order[b.status]) || (a.kind===b.kind? a.n-b.n : (a.kind==='residential'?-1:1)));
+  on.sort((a,b)=>(order[a.status]-order[b.status])
+    || (a.kind!==b.kind ? (a.kind==='residential'?-1:1) : 0)
+    || ((a.phase||'')<(b.phase||'')?-1:(a.phase||'')>(b.phase||'')?1:0)
+    || a.n-b.n);
   $('listCount').textContent=on.length+' shown';
   wrap.innerHTML=on.slice(0,220).map(l=>{
     const i=LOTS.indexOf(l);
     const isCom=l.kind==='commercial';
-    const name=isCom?('Commercial Pad '+l.label.replace('Lot ','')):l.label;
+    const name=isCom?('Commercial Pad '+l.n):l.label;
     const sub=[STATUS_LABEL[l.status]||l.status,
                l.sqft?num(l.sqft)+' sq ft':null,
-               isCom?null:(l.phase?'Phase '+l.phase:null),
+               l.phase?'Phase '+l.phase:null,
                l.address||null].filter(Boolean).join(' · ');
     const price=l.price?money(l.price):(isCom?'On request':'—');
     const plabel=l.price?(l.status==='sold'?'Sold at':'List'):(isCom?'Pricing':'');
@@ -630,8 +636,10 @@ function select(i){
   if(selected!=null && LOTS[selected]._el) LOTS[selected]._el.classList.remove('sel');
   selected=i; l._el.classList.add('sel');
   const isCom=l.kind==='commercial';
-  $('pcKind').textContent=isCom?'Commercial Pad Site':('Residential Lot'+(l.phase?' · Phase '+l.phase:''));
-  $('pcName').textContent=isCom?('Pad '+l.label.replace('Lot ','')):l.label;
+  $('pcKind').textContent=isCom
+    ? ('Commercial Pad Site'+(l.phase?' · Phase '+l.phase:''))
+    : ('Residential Lot'+(l.phase?' · Phase '+l.phase:''));
+  $('pcName').textContent=isCom?('Lot '+l.n):l.label;
   const b=$('pcBadge');
   b.className='badge '+(isCom?'commercial':cls(l.status));
   b.innerHTML='<span class="dot" style="background:rgba(0,0,0,.28)"></span>'+
@@ -646,13 +654,17 @@ function select(i){
   if(l.acres) rows.push(['Acreage', l.acres+' acres']);
   if(l.address) rows.push(['Address', l.address]);
   if(!isCom && l.phase) rows.push(['Phase', 'Phase '+l.phase]);
-  if(isCom) rows.push(['Frontage','W Business 77']);
+  if(isCom){
+    rows.push(['Phase','Phase '+l.phase]);
+    rows.push(['Frontage','W Business 77']);
+    if(l.platRef) rows.push(['Recorded plat','Lot '+l.platRef]);
+  }
   if(l.price && l.sqft) rows.push(['Price per sq ft','$'+(l.price/l.sqft).toFixed(2)]);
   $('pcRows').innerHTML = rows.length
     ? rows.map(r=>`<div class="prow"><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')
     : '<p class="pc-none">This lot has sold and its details are no longer published. Ask us about comparable lots still available.</p>';
 
-  const name=isCom?('Commercial Pad '+l.label.replace('Lot ','')):l.label;
+  const name=isCom?('Commercial Pad '+l.n+' (Phase '+l.phase+')'):l.label;
   $('pcEnquire').href='index.html?lot='+encodeURIComponent(name)+'#contact';
   $('pcEnquire').textContent=l.status==='sold'?'Ask About Similar Lots':'Enquire About This Lot';
 

@@ -101,20 +101,25 @@ lots.sort(key=lambda l: int(re.search(r'(\d+)', l['label']).group(1)) if re.sear
 
 # Classify: commercial pads come through as "Lot LOT 1".."Lot LOT 8"
 ACRES = {1: 1.60, 2: 1.03, 3: 1.24, 4: 1.24, 5: 1.24, 6: 1.24, 7: 1.37, 8: 1.01}
+# Pads 1-4 sell as Phase 1 Lots 1-4; pads 5-8 sell as Phase 2 Lots 1-4.
+# platRef keeps the recorded plat number so the map ties back to the document.
 for l in lots:
     m = re.match(r'^Lot LOT (\d+)$', l['label'])
     if m:
+        plat_n = int(m.group(1))
         l['kind'] = 'commercial'
-        l['n'] = int(m.group(1))
-        l['label'] = 'Lot ' + m.group(1)
-        if l['n'] in ACRES:
-            l['acres'] = ACRES[l['n']]
-            l['sqft'] = round(ACRES[l['n']] * 43560)
+        l['platRef'] = plat_n
+        l['phase'] = '1' if plat_n <= 4 else '2'
+        l['n'] = plat_n if plat_n <= 4 else plat_n - 4
+        l['label'] = 'Lot %d' % l['n']
+        if plat_n in ACRES:
+            l['acres'] = ACRES[plat_n]
+            l['sqft'] = round(ACRES[plat_n] * 43560)
     else:
         l['kind'] = 'residential'
         d = re.search(r'(\d+)', l['label'])
         l['n'] = int(d.group(1)) if d else 0
-lots.sort(key=lambda l: (l['kind'] != 'residential', l['n']))
+lots.sort(key=lambda l: (l['kind'] != 'residential', l.get('platRef', l['n'])))
 
 out = {'viewBox': viewBox, 'lots': lots, 'labels': labels}
 dest = 'assets/lots.json'
