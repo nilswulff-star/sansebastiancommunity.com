@@ -512,7 +512,8 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
    SECTION 2 — PLAT MAP
 ══════════════════════════════════════════ */
 #plat{background:var(--navy);padding:90px 0}
-.plat-layout{display:grid;grid-template-columns:1fr 1.35fr;gap:4rem;align-items:center}
+#plat .container{max-width:1340px}
+.plat-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:2rem;align-items:center}
 .plat-left .section-title{color:var(--white)}
 .plat-left .section-body{color:rgba(255,255,255,.65)}
 .phase-tabs{display:flex;gap:.5rem;margin:2rem 0}
@@ -555,9 +556,11 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   background:var(--gold);color:var(--white);
   padding:.4rem .9rem;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
 }
-.plat-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}
+.plat-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.6rem}
 .plat-actions .btn{
-  padding:1.15rem 2.4rem;font-size:.85rem;font-weight:700;letter-spacing:.1em;
+  flex:1 1 0;min-width:0;
+  padding:1.35rem 2rem;font-size:.92rem;font-weight:700;letter-spacing:.1em;
+  justify-content:center;
 }
 /* High-visibility amber, for buttons that sit on the deep sage sections */
 .btn-highlight{
