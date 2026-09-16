@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Available Lots — San Sebastian | San Benito, Texas</title>
+<meta name="description" content="Interactive lot map for San Sebastian in San Benito, Texas. Browse 185 residential lots and 8 commercial pad sites by phase, price and size, and see what is available now."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="San Sebastian"/>
+<meta property="og:title" content="Available Lots — San Sebastian | San Benito, Texas"/>
+<meta property="og:description" content="Browse the San Sebastian lot map. 185 residential lots and 8 commercial pad sites in San Benito, Texas."/>
+<meta property="og:url" content="https://sansebastiancommunity.com/lots"/>
+<meta property="og:image" content="https://sansebastiancommunity.com/assets/og-image.jpg"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="canonical" href="https://sansebastiancommunity.com/lots"/>
+<link rel="icon" type="image/png" href="assets/favicon.png"/>
+<link rel="apple-touch-icon" href="assets/favicon.png"/>
+<meta name="theme-color" content="#243B34"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#335E52; --navy-mid:#2C5347; --ink:#243B34;
+  --gold:#B77B5A; --amber:#F2B134; --sand:#D6C2A1;
+  --cream:#F3EFE7; --cream-dark:#E9E2D5; --white:#fff;
+  --charcoal:#2E2E2B; --gray:#7A776E; --gray-light:#E5E0D6;
+  --avail:#7FB894; --avail-ink:#1E4632;
+  --reserved:#E0A93B; --reserved-ink:#5B3F0C;
+  --sold:#BDB7AA; --sold-ink:#4A463D;
+  --presale:#8FAEBD; --presale-ink:#204151;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);
+  --header-h:64px; --bar-h:58px;
+}
+html,body{height:100%}
+body{
+  font-family:var(--sans);background:var(--cream);color:var(--charcoal);
+  -webkit-font-smoothing:antialiased;overflow:hidden;
+}
+a{color:var(--navy)}
+
+/* ── HEADER ── */
+header{
+  height:var(--header-h);background:var(--ink);color:#fff;
+  display:flex;align-items:center;gap:1rem;padding:0 1rem 0 .85rem;
+  position:relative;z-index:40;
+}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:#fff;flex-shrink:0}
+.brand img{height:36px;width:auto;display:block}
+.brand-txt{display:flex;flex-direction:column;line-height:1}
+.brand-name{font-family:var(--serif);font-size:1.15rem;font-weight:600;letter-spacing:.03em}
+.brand-sub{font-size:.54rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:3px}
+.hdr-stat{margin-left:auto;display:flex;align-items:center;gap:1.4rem;font-size:.72rem;white-space:nowrap}
+.hdr-stat b{font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--amber);margin-right:.3rem}
+.hdr-stat span{color:rgba(255,255,255,.6);letter-spacing:.1em;text-transform:uppercase;font-size:.6rem;font-weight:600}
+.hdr-back{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:.4rem;
+  padding:.5rem 1rem;border:1.5px solid rgba(255,255,255,.4);
+  color:#fff;text-decoration:none;font-size:.66rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;transition:all .2s;
+}
+.hdr-back:hover{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+
+/* ── FILTER BAR ── */
+.bar{
+  min-height:var(--bar-h);background:var(--white);
+  border-bottom:1px solid var(--gray-light);
+  display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;
+  overflow-x:auto;position:relative;z-index:30;scrollbar-width:thin;
+}
+.bar::-webkit-scrollbar{height:4px}
+.bar::-webkit-scrollbar-thumb{background:var(--gray-light)}
+.bar-label{
+  font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gray);margin-right:.2rem;flex-shrink:0;
+}
+.chip{
+  flex-shrink:0;display:inline-flex;align-items:center;gap:.45rem;
+  padding:.5rem .85rem;font-family:var(--sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.04em;background:var(--cream);color:var(--charcoal);
+  border:1.5px solid var(--gray-light);cursor:pointer;
+  transition:border-color .18s,background .18s,color .18s;white-space:nowrap;
+}
+.chip:hover{border-color:var(--gray)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip .dot{width:11px;height:11px;border-radius:2px;flex-shrink:0;border:1px solid rgba(0,0,0,.18)}
+.chip .cnt{opacity:.62;font-weight:500;font-variant-numeric:tabular-nums}
+.bar-sep{width:1px;height:26px;background:var(--gray-light);flex-shrink:0;margin:0 .35rem}
+.sel{
+  flex-shrink:0;padding:.5rem .7rem;font-family:var(--sans);font-size:.7rem;font-weight:600;
+  background:var(--cream);border:1.5px solid var(--gray-light);color:var(--charcoal);
+  cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237A776E' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .55rem center;padding-right:1.7rem;
+}
+.sel:focus-visible,.chip:focus-visible,.btn-ico:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.bar-right{margin-left:auto;display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.reset{
+  background:none;border:none;font-family:var(--sans);font-size:.68rem;font-weight:600;
+  color:var(--gold);cursor:pointer;text-decoration:underline;text-underline-offset:3px;
+  padding:.4rem .2rem;white-space:nowrap;
+}
+.reset[hidden]{display:none}
+
+/* ── STAGE ── */
+.stage{position:relative;height:calc(100vh - var(--header-h) - var(--bar-h));height:calc(100dvh - var(--header-h) - var(--bar-h));display:flex;overflow:hidden}
+.mapwrap{position:relative;flex:1;min-width:0;background:var(--cream-dark);overflow:hidden;touch-action:none}
+#plat{display:block;width:100%;height:100%;cursor:grab}
+#plat.dragging{cursor:grabbing}
+#plat .lot{
+  stroke:#F7F5F1;stroke-width:1.1;stroke-linejoin:round;
+  transition:fill .15s var(--ease),opacity .15s var(--ease);
+  cursor:pointer;outline:none;
+}
+#plat .lot.available{fill:var(--avail)}
+#plat .lot.reserved{fill:var(--reserved)}
+#plat .lot.sold{fill:var(--sold)}
+#plat .lot.presale{fill:var(--presale)}
+#plat .lot.commercial{stroke-width:1.6}
+#plat .lot.dim{opacity:.16;cursor:default}
+#plat .lot:hover:not(.dim){fill:var(--ink)}
+#plat .lot.sel{fill:var(--ink);stroke:var(--amber);stroke-width:2.6}
+#plat .lot:focus-visible{stroke:var(--amber);stroke-width:2.6}
+#plat .lbl{
+  font-family:var(--sans);font-size:7px;font-weight:700;fill:#101828;
+  pointer-events:none;user-select:none;text-anchor:middle;dominant-baseline:middle;
+  transition:opacity .15s;
+}
+#plat .lbl.dim{opacity:.18}
+#plat .lbl.on-dark{fill:#fff}
+
+.zoomer{position:absolute;right:.9rem;bottom:.9rem;display:flex;flex-direction:column;gap:.35rem;z-index:12}
+.btn-ico{
+  width:40px;height:40px;background:var(--white);border:1px solid var(--gray-light);
+  color:var(--ink);font-size:1.15rem;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 10px rgba(36,59,52,.14);transition:background .18s;
+  font-family:var(--sans);line-height:1;
+}
+.btn-ico:hover{background:var(--cream)}
+.btn-ico.wide{width:40px;font-size:.54rem;font-weight:700;letter-spacing:.06em}
+.hint{
+  position:absolute;left:.9rem;bottom:.9rem;z-index:12;
+  background:rgba(36,59,52,.9);color:rgba(255,255,255,.9);
+  padding:.45rem .8rem;font-size:.62rem;letter-spacing:.06em;
+  pointer-events:none;transition:opacity .4s;
+}
+.hint[hidden]{display:none}
+.empty{
+  position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+  flex-direction:column;gap:.8rem;text-align:center;padding:2rem;z-index:5;
+}
+.empty.show{display:flex}
+.empty p{font-size:.9rem;color:var(--gray);max-width:340px;line-height:1.7}
+
+/* ── MOBILE LOT LIST ── */
+.listwrap{
+  display:none;flex:1;min-height:0;flex-direction:column;
+  background:var(--cream);border-top:1px solid var(--gray-light);
+}
+.list-head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;
+  padding:.7rem 1rem .5rem;flex-shrink:0;
+}
+.list-head h2{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--navy)}
+.list-head span{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+.list{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 .7rem 1rem}
+.lrow{
+  width:100%;display:flex;align-items:center;gap:.75rem;text-align:left;
+  padding:.8rem .85rem;margin-bottom:.4rem;background:var(--white);
+  border:1px solid var(--gray-light);border-left:4px solid var(--gray-light);
+  font-family:var(--sans);cursor:pointer;
+}
+.lrow:active{background:var(--cream-dark)}
+.lrow.available{border-left-color:var(--avail)}
+.lrow.presale{border-left-color:var(--presale)}
+.lrow.reserved{border-left-color:var(--reserved)}
+.lrow.sold{border-left-color:var(--sold);opacity:.62}
+.lrow-main{flex:1;min-width:0}
+.lrow-t{font-size:.86rem;font-weight:700;color:var(--charcoal)}
+.lrow-s{font-size:.7rem;color:var(--gray);margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lrow-p{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--navy);flex-shrink:0}
+.lrow-p small{display:block;font-family:var(--sans);font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);text-align:right;margin-top:.1rem}
+
+/* ── DETAIL PANEL ── */
+.panel{
+  width:340px;flex-shrink:0;background:var(--white);
+  border-left:1px solid var(--gray-light);
+  display:flex;flex-direction:column;overflow-y:auto;
+  box-shadow:-4px 0 24px rgba(36,59,52,.07);
+}
+.panel-empty{padding:2.2rem 1.6rem;color:var(--gray);font-size:.82rem;line-height:1.8}
+.panel-empty strong{display:block;font-family:var(--serif);font-size:1.3rem;color:var(--navy);margin-bottom:.5rem;font-weight:600}
+.pcard{display:none;flex-direction:column;flex:1}
+.pcard.show{display:flex}
+.pc-top{background:var(--ink);color:#fff;padding:1.5rem 1.6rem 1.3rem;position:relative}
+.pc-close{
+  position:absolute;top:.8rem;right:.8rem;background:none;border:none;
+  color:rgba(255,255,255,.65);font-size:1.4rem;cursor:pointer;line-height:1;padding:.25rem .45rem;
+}
+.pc-close:hover{color:#fff}
+.pc-kind{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sand);margin-bottom:.35rem}
+.pc-name{font-family:var(--serif);font-size:2.1rem;font-weight:600;line-height:1;margin-bottom:.7rem}
+.badge{
+  display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .75rem;
+  font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+}
+.badge .dot{width:9px;height:9px;border-radius:2px}
+.badge.available{background:var(--avail);color:var(--avail-ink)}
+.badge.reserved{background:var(--reserved);color:var(--reserved-ink)}
+.badge.sold{background:var(--sold);color:var(--sold-ink)}
+.badge.presale{background:var(--presale);color:var(--presale-ink)}
+.pc-price{padding:1.2rem 1.6rem;border-bottom:1px solid var(--gray-light)}
+.pc-price-n{font-family:var(--serif);font-size:2.3rem;font-weight:700;color:var(--navy);line-height:1}
+.pc-price-l{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-top:.35rem}
+.pc-rows{padding:.4rem 1.6rem 1rem}
+.prow{display:flex;justify-content:space-between;gap:1rem;padding:.72rem 0;border-bottom:1px solid var(--gray-light)}
+.prow:last-child{border-bottom:none}
+.prow dt{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);padding-top:.15rem}
+.prow dd{font-size:.88rem;font-weight:600;color:var(--charcoal);text-align:right}
+.pc-act{padding:0 1.6rem 1.6rem;margin-top:auto;display:flex;flex-direction:column;gap:.6rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:1rem 1.2rem;font-family:var(--sans);font-size:.74rem;font-weight:700;
+  letter-spacing:.11em;text-transform:uppercase;text-decoration:none;
+  border:2px solid transparent;cursor:pointer;transition:all .2s var(--ease);
+}
+.btn-amber{background:var(--amber);color:var(--ink)}
+.btn-amber:hover{background:#FFC751;transform:translateY(-1px);box-shadow:0 8px 20px rgba(242,177,52,.4)}
+.btn-line{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-line:hover{background:var(--navy);color:#fff}
+.pc-note{font-size:.66rem;color:var(--gray);line-height:1.6;padding:0 1.6rem 1.4rem}
+
+/* ── MOBILE ── */
+.sheet-grip{display:none}
+@media(max-width:820px){
+  :root{--header-h:58px}
+  body{overflow:hidden}
+  .brand-sub{display:none}
+  .brand-name{font-size:1rem}
+  .brand img{height:30px}
+  .hdr-stat{gap:.75rem;min-width:0;overflow:hidden}
+  .hdr-stat .st:nth-child(n+2){display:none}
+  .hdr-stat b{font-size:1rem}
+  .hdr-back{padding:.45rem .7rem;font-size:.6rem}
+  header{gap:.6rem;padding:0 .6rem}
+  .stage{display:flex;flex-direction:column}
+  .mapwrap{flex:0 0 44%;height:auto}
+  .listwrap{display:flex}
+  .panel{
+    position:fixed;left:0;right:0;bottom:0;width:auto;max-height:76vh;
+    border-left:none;border-top:1px solid var(--gray-light);
+    transform:translateY(102%);transition:transform .3s var(--ease);
+    z-index:60;box-shadow:0 -8px 32px rgba(36,59,52,.22);
+  }
+  .panel.open{transform:translateY(0)}
+  .panel-empty{display:none}
+  .sheet-grip{
+    display:block;width:42px;height:4px;border-radius:2px;background:var(--gray-light);
+    margin:.6rem auto .1rem;flex-shrink:0;
+  }
+  .pc-name{font-size:1.8rem}
+  .zoomer{bottom:.9rem;right:.7rem}
+  .btn-ico{width:44px;height:44px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="brand">
+    <img src="assets/logo-mark-cream.png" alt=""/>
+    <span class="brand-txt">
+      <span class="brand-name">San Sebastian</span>
+      <span class="brand-sub">Lot Availability · San Benito, TX</span>
+    </span>
+  </a>
+  <div class="hdr-stat" id="hdrStat"></div>
+  <a href="index.html" class="hdr-back">← Site</a>
+</header>
+
+<div class="bar" role="group" aria-label="Filter lots">
+  <span class="bar-label">Status</span>
+  <button class="chip" data-status="available" aria-pressed="true"><span class="dot" style="background:var(--avail)"></span>Available <span class="cnt" data-cnt="available"></span></button>
+  <button class="chip" data-status="pre-sale" aria-pressed="true"><span class="dot" style="background:var(--presale)"></span>Pre-Sale <span class="cnt" data-cnt="pre-sale"></span></button>
+  <button class="chip" data-status="reserved" aria-pressed="true"><span class="dot" style="background:var(--reserved)"></span>Reserved <span class="cnt" data-cnt="reserved"></span></button>
+  <button class="chip" data-status="sold" aria-pressed="true"><span class="dot" style="background:var(--sold)"></span>Sold <span class="cnt" data-cnt="sold"></span></button>
+  <span class="bar-sep"></span>
+  <span class="bar-label">Phase</span>
+  <select class="sel" id="fPhase" aria-label="Filter by phase">
+    <option value="">All phases</option>
+    <option value="1">Phase 1</option>
+    <option value="2">Phase 2</option>
+    <option value="3">Phase 3</option>
+    <option value="commercial">Commercial pads</option>
+  </select>
+  <select class="sel" id="fPrice" aria-label="Filter by price">
+    <option value="">Any price</option>
+    <option value="0-70000">Under $70,000</option>
+    <option value="70000-85000">$70,000 – $85,000</option>
+    <option value="85000-100000">$85,000 – $100,000</option>
+    <option value="100000-99999999">$100,000+</option>
+  </select>
+  <select class="sel" id="fSize" aria-label="Filter by lot size">
+    <option value="">Any size</option>
+    <option value="0-7000">Under 7,000 sq ft</option>
+    <option value="7000-9000">7,000 – 9,000 sq ft</option>
+    <option value="9000-99999999">9,000+ sq ft</option>
+  </select>
+  <div class="bar-right">
+    <button class="reset" id="reset" hidden>Clear filters</button>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="mapwrap" id="mapwrap">
+    <svg id="plat" role="application" aria-label="San Sebastian interactive lot map"></svg>
+    <div class="empty" id="empty"><p>No lots match these filters. Try widening the price or size range.</p></div>
+    <div class="hint" id="hint">Drag to pan · scroll to zoom · click a lot for detail</div>
+    <div class="zoomer">
+      <button class="btn-ico" id="zIn"  aria-label="Zoom in">+</button>
+      <button class="btn-ico" id="zOut" aria-label="Zoom out">−</button>
+      <button class="btn-ico wide" id="zRst" aria-label="Reset view">RESET</button>
+    </div>
+  </div>
+
+  <div class="listwrap" id="listwrap">
+    <div class="list-head">
+      <h2>Matching lots</h2>
+      <span id="listCount"></span>
+    </div>
+    <div class="list" id="list"></div>
+  </div>
+
+  <aside class="panel" id="panel" aria-live="polite">
+    <div class="sheet-grip"></div>
+    <div class="panel-empty" id="panelEmpty">
+      <strong>Select a lot</strong>
+      Click any lot on the map to see its price, size, address and phase. Use the filters above to narrow by status, phase, price or size.
+    </div>
+    <div class="pcard" id="pcard">
+      <div class="pc-top">
+        <button class="pc-close" id="pcClose" aria-label="Close lot detail">✕</button>
+        <div class="pc-kind" id="pcKind"></div>
+        <div class="pc-name" id="pcName"></div>
+        <span class="badge" id="pcBadge"></span>
+      </div>
+      <div class="pc-price" id="pcPriceWrap">
+        <div class="pc-price-n" id="pcPrice"></div>
+        <div class="pc-price-l" id="pcPriceLbl">List price</div>
+      </div>
+      <dl class="pc-rows" id="pcRows"></dl>
+      <div class="pc-act">
+        <a class="btn btn-amber" id="pcEnquire" href="index.html#contact">Enquire About This Lot</a>
+        <a class="btn btn-line" href="index.html#documents">Community Documents</a>
+      </div>
+      <p class="pc-note">Pricing and availability are subject to change without notice. Confirm current status with the listing team before relying on it.</p>
+    </div>
+  </aside>
+</div>
+
+<div class="sr" id="live" aria-live="polite"></div>
+
+<script>
+const SVGNS='http://www.w3.org/2000/svg';
+const $=id=>document.getElementById(id);
+const plat=$('plat');
+let DATA=null, LOTS=[], byId=new Map(), selected=null;
+let VB={x:0,y:0,w:100,h:100}, HOME=null;
+
+const STATUS_LABEL={'available':'Available','pre-sale':'Pre-Sale','reserved':'Reserved','sold':'Sold'};
+const cls = s => s==='pre-sale' ? 'presale' : s;
+const money = n => '$'+n.toLocaleString('en-US');
+const num   = n => n.toLocaleString('en-US',{maximumFractionDigits:0});
+
+/* ── LOAD ── */
+fetch('assets/lots.json').then(r=>r.json()).then(d=>{ DATA=d; build(); }).catch(()=>{
+  $('empty').classList.add('show');
+  $('empty').querySelector('p').textContent='The lot map could not be loaded. Please refresh, or contact us for current availability.';
+});
+
+function build(){
+  const vb=DATA.viewBox.split(/\s+/).map(Number);
+  VB={x:vb[0],y:vb[1],w:vb[2],h:vb[3]};
+  HOME={...VB};
+  applyVB();
+
+  const gLots=document.createElementNS(SVGNS,'g');
+  const gLbls=document.createElementNS(SVGNS,'g');
+  gLbls.setAttribute('aria-hidden','true');
+
+  DATA.lots.forEach((l,i)=>{
+    const id='lot-'+i;
+    const p=document.createElementNS(SVGNS,'polygon');
+    p.setAttribute('points',l.points);
+    p.setAttribute('class','lot '+cls(l.status)+(l.kind==='commercial'?' commercial':''));
+    p.setAttribute('tabindex','0');
+    p.setAttribute('role','button');
+    p.setAttribute('id',id);
+    p.setAttribute('aria-label',ariaFor(l));
+    p.addEventListener('click',e=>{e.stopPropagation();select(i)});
+    p.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();select(i)}
+    });
+    gLots.appendChild(p);
+    l._el=p; l._id=id; byId.set(i,l);
+    LOTS.push(l);
+  });
+
+  (DATA.labels||[]).forEach(t=>{
+    const el=document.createElementNS(SVGNS,'text');
+    el.setAttribute('x',t.x); el.setAttribute('y',t.y);
+    el.setAttribute('class','lbl');
+    el.textContent=t.t;
+    gLbls.appendChild(el);
+  });
+
+  plat.appendChild(gLots); plat.appendChild(gLbls);
+  renderCounts(); applyFilters();
+  setTimeout(()=>{const h=$('hint'); if(h){h.style.opacity='0'; setTimeout(()=>h.hidden=true,500)}},5200);
+}
+
+function ariaFor(l){
+  const bits=[l.kind==='commercial'?'Commercial pad '+l.label.replace('Lot ',''):l.label, STATUS_LABEL[l.status]||l.status];
+  if(l.phase) bits.push('Phase '+l.phase);
+  if(l.price) bits.push(money(l.price));
+  if(l.sqft)  bits.push(num(l.sqft)+' square feet');
+  if(l.address) bits.push(l.address);
+  return bits.join(', ');
+}
+
+/* ── VIEWBOX / ZOOM / PAN ── */
+function applyVB(){ plat.setAttribute('viewBox',`${VB.x} ${VB.y} ${VB.w} ${VB.h}`); }
+function zoomAt(f,cx,cy){
+  const nw=Math.min(HOME.w*1.6,Math.max(HOME.w/14,VB.w*f));
+  const k=nw/VB.w;
+  VB.x=cx-(cx-VB.x)*k; VB.y=cy-(cy-VB.y)*k;
+  VB.w=nw; VB.h=VB.h*k;
+  applyVB();
+}
+function svgPt(clientX,clientY){
+  const r=plat.getBoundingClientRect();
+  return {x:VB.x+(clientX-r.left)/r.width*VB.w, y:VB.y+(clientY-r.top)/r.height*VB.h};
+}
+$('zIn').onclick =()=>zoomAt(1/1.45,VB.x+VB.w/2,VB.y+VB.h/2);
+$('zOut').onclick=()=>zoomAt(1.45,VB.x+VB.w/2,VB.y+VB.h/2);
+$('zRst').onclick=()=>{VB={...HOME};applyVB()};
+
+$('mapwrap').addEventListener('wheel',e=>{
+  e.preventDefault();
+  const p=svgPt(e.clientX,e.clientY);
+  zoomAt(e.deltaY>0?1.16:1/1.16,p.x,p.y);
+},{passive:false});
+
+let drag=null;
+const pts=new Map();
+plat.addEventListener('pointerdown',e=>{
+  pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pts.size===1){ drag={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y,moved:0}; plat.setPointerCapture(e.pointerId); }
+});
+plat.addEventListener('pointermove',e=>{
+  if(!pts.has(e.pointerId)) return;
+  pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pts.size===2){ pinch(); return; }
+  if(!drag) return;
+  const r=plat.getBoundingClientRect();
+  const dx=(e.clientX-drag.x)/r.width*VB.w, dy=(e.clientY-drag.y)/r.height*VB.h;
+  drag.moved=Math.max(drag.moved,Math.abs(e.clientX-drag.x)+Math.abs(e.clientY-drag.y));
+  if(drag.moved>4) plat.classList.add('dragging');
+  VB.x=drag.vx-dx; VB.y=drag.vy-dy; applyVB();
+});
+let lastPinch=0;
+function pinch(){
+  const a=[...pts.values()];
+  const d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);
+  if(lastPinch){
+    const p=svgPt((a[0].x+a[1].x)/2,(a[0].y+a[1].y)/2);
+    zoomAt(lastPinch/d,p.x,p.y);
+  }
+  lastPinch=d;
+}
+function endPtr(e){
+  pts.delete(e.pointerId);
+  if(pts.size<2) lastPinch=0;
+  if(pts.size===0){ setTimeout(()=>plat.classList.remove('dragging'),0); drag=null; }
+}
+plat.addEventListener('pointerup',endPtr);
+plat.addEventListener('pointercancel',endPtr);
+plat.addEventListener('click',e=>{ if(e.target===plat) deselect(); });
+
+/* ── FILTERS ── */
+const active=new Set(['available','pre-sale','reserved','sold']);
+document.querySelectorAll('.chip').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const s=c.dataset.status;
+    if(active.has(s)) active.delete(s); else active.add(s);
+    if(!active.size){ active.add(s); return; }
+    c.setAttribute('aria-pressed',active.has(s));
+    applyFilters();
+  });
+});
+['fPhase','fPrice','fSize'].forEach(id=>$(id).addEventListener('change',applyFilters));
+$('reset').addEventListener('click',()=>{
+  active.clear(); ['available','pre-sale','reserved','sold'].forEach(s=>active.add(s));
+  document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','true'));
+  $('fPhase').value=''; $('fPrice').value=''; $('fSize').value='';
+  applyFilters();
+});
+
+function inRange(v,spec){
+  if(!spec) return true;
+  if(v==null) return false;
+  const [a,b]=spec.split('-').map(Number);
+  return v>=a && v<b;
+}
+function applyFilters(){
+  const ph=$('fPhase').value, pr=$('fPrice').value, sz=$('fSize').value;
+  let shown=0;
+  LOTS.forEach((l,i)=>{
+    let ok=active.has(l.status);
+    if(ok && ph){ ok = ph==='commercial' ? l.kind==='commercial' : (l.kind==='residential' && l.phase===ph); }
+    if(ok && pr) ok=inRange(l.price,pr);
+    if(ok && sz) ok=inRange(l.sqft,sz);
+    l._on=ok; shown+=ok?1:0;
+    l._el.classList.toggle('dim',!ok);
+    l._el.setAttribute('tabindex',ok?'0':'-1');
+    l._el.setAttribute('aria-hidden',ok?'false':'true');
+  });
+  const lbls=plat.querySelectorAll('.lbl');
+  LOTS.forEach((l,i)=>{ if(lbls[i]) lbls[i].classList.toggle('dim',!l._on); });
+  renderList();
+  $('empty').classList.toggle('show',shown===0);
+  const filtered = active.size<4 || ph || pr || sz;
+  $('reset').hidden=!filtered;
+  $('live').textContent=shown+' lots shown';
+  if(selected!=null && !LOTS[selected]._on) deselect();
+  renderCounts(shown);
+}
+
+function renderCounts(shown){
+  const all=LOTS;
+  ['available','pre-sale','reserved','sold'].forEach(s=>{
+    const n=all.filter(l=>l.status===s).length;
+    const el=document.querySelector(`[data-cnt="${s}"]`);
+    if(el) el.textContent=n?n:'0';
+    const chip=document.querySelector(`.chip[data-status="${s}"]`);
+    if(chip && !n) chip.style.display='none';
+  });
+  const availRes=all.filter(l=>l.status==='available'&&l.kind==='residential');
+  const availCom=all.filter(l=>l.status==='available'&&l.kind==='commercial');
+  const prices=availRes.filter(l=>l.price).map(l=>l.price);
+  $('hdrStat').innerHTML=
+    `<span class="st"><b>${availRes.length}</b><span>Lots Available</span></span>`+
+    `<span class="st"><b>${availCom.length}</b><span>Pads Available</span></span>`+
+    (prices.length?`<span class="st"><b>${money(Math.min(...prices))}</b><span>Starting At</span></span>`:'');
+}
+
+/* ── MOBILE LIST ── */
+function renderList(){
+  const wrap=$('list'); if(!wrap) return;
+  const on=LOTS.filter(l=>l._on);
+  const order={available:0,'pre-sale':1,reserved:2,sold:3};
+  on.sort((a,b)=>(order[a.status]-order[b.status]) || (a.kind===b.kind? a.n-b.n : (a.kind==='residential'?-1:1)));
+  $('listCount').textContent=on.length+' shown';
+  wrap.innerHTML=on.slice(0,220).map(l=>{
+    const i=LOTS.indexOf(l);
+    const isCom=l.kind==='commercial';
+    const name=isCom?('Commercial Pad '+l.label.replace('Lot ','')):l.label;
+    const sub=[STATUS_LABEL[l.status]||l.status,
+               l.sqft?num(l.sqft)+' sq ft':null,
+               isCom?null:(l.phase?'Phase '+l.phase:null),
+               l.address||null].filter(Boolean).join(' · ');
+    const price=l.price?money(l.price):(isCom?'On request':'—');
+    const plabel=l.price?(l.status==='sold'?'Sold at':'List'):(isCom?'Pricing':'');
+    return `<button class="lrow ${cls(l.status)}" data-i="${i}">
+      <span class="lrow-main"><span class="lrow-t">${name}</span><span class="lrow-s">${sub}</span></span>
+      <span class="lrow-p">${price}${plabel?`<small>${plabel}</small>`:''}</span>
+    </button>`;
+  }).join('');
+  wrap.querySelectorAll('.lrow').forEach(b=>b.addEventListener('click',()=>{
+    const i=+b.dataset.i; select(i); focusLot(i);
+  }));
+}
+function focusLot(i){
+  const l=LOTS[i]; if(!l||!l._el) return;
+  const b=l._el.getBBox();
+  const pad=Math.max(b.width,b.height)*7;
+  VB={x:b.x+b.width/2-pad/2, y:b.y+b.height/2-(pad*VB.h/VB.w)/2, w:pad, h:pad*VB.h/VB.w};
+  applyVB();
+}
+
+/* ── SELECTION ── */
+function select(i){
+  const l=LOTS[i];
+  if(!l._on) return;
+  if(selected!=null && LOTS[selected]._el) LOTS[selected]._el.classList.remove('sel');
+  selected=i; l._el.classList.add('sel');
+  const isCom=l.kind==='commercial';
+  $('pcKind').textContent=isCom?'Commercial Pad Site':'Residential Lot · Phase '+(l.phase||'—');
+  $('pcName').textContent=isCom?('Pad '+l.label.replace('Lot ','')):l.label;
+  const b=$('pcBadge');
+  b.className='badge '+cls(l.status);
+  b.innerHTML='<span class="dot" style="background:rgba(0,0,0,.28)"></span>'+(STATUS_LABEL[l.status]||l.status);
+
+  if(l.price){ $('pcPrice').textContent=money(l.price); $('pcPriceLbl').textContent=l.status==='sold'?'Last list price':'List price'; $('pcPriceWrap').style.display=''; }
+  else if(isCom){ $('pcPrice').textContent='On request'; $('pcPriceLbl').textContent='Pricing'; $('pcPriceWrap').style.display=''; }
+  else { $('pcPriceWrap').style.display='none'; }
+
+  const rows=[];
+  if(l.sqft)  rows.push(['Lot size', num(l.sqft)+' sq ft']);
+  if(l.acres) rows.push(['Acreage', l.acres+' acres']);
+  if(l.address) rows.push(['Address', l.address]);
+  if(!isCom && l.phase) rows.push(['Phase', 'Phase '+l.phase]);
+  if(isCom) rows.push(['Frontage','W Business 77']);
+  if(l.price && l.sqft) rows.push(['Price per sq ft','$'+(l.price/l.sqft).toFixed(2)]);
+  $('pcRows').innerHTML=rows.map(r=>`<div class="prow"><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('');
+
+  const name=isCom?('Commercial Pad '+l.label.replace('Lot ','')):l.label;
+  $('pcEnquire').href='index.html?lot='+encodeURIComponent(name)+'#contact';
+  $('pcEnquire').textContent=l.status==='sold'?'Ask About Similar Lots':'Enquire About This Lot';
+
+  $('panelEmpty').style.display='none';
+  $('pcard').classList.add('show');
+  $('panel').classList.add('open');
+  $('live').textContent=ariaFor(l);
+}
+function deselect(){
+  if(selected!=null && LOTS[selected]._el) LOTS[selected]._el.classList.remove('sel');
+  selected=null;
+  $('pcard').classList.remove('show');
+  $('panel').classList.remove('open');
+  $('panelEmpty').style.display='';
+}
+$('pcClose').addEventListener('click',deselect);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') deselect(); });
+</script>
+</body>
+</html>

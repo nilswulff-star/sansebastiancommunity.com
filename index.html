@@ -2545,6 +2545,21 @@ function switchContactTab(tab){
   }
 }
 
+/* ── PREFILL FROM LOT MAP (?lot=Lot%20107) ── */
+(function(){
+  const lot=new URLSearchParams(location.search).get('lot');
+  if(!lot) return;
+  const isCommercial=/commercial|pad/i.test(lot);
+  if(isCommercial===false) switchContactTab('residential');
+  const form=document.getElementById(isCommercial?'contactFormCommercial':'contactFormResidential');
+  if(!form) return;
+  const msg=form.querySelector('[name="message"]');
+  if(msg && !msg.value) msg.value='I would like more information about '+lot+' at San Sebastian.';
+  const sel=form.querySelector('[name="interest"]');
+  if(sel) for(const o of sel.options){ if(/Phase 1/.test(o.value)){ sel.value=o.value; break; } }
+  track('lot_map_enquiry',{lot:lot});
+})();
+
 /* ── CONTACT FORM ── */
 document.querySelectorAll('.formUrl').forEach(f=>{f.value=window.location.href});
 
