@@ -215,10 +215,10 @@
         },
         {
           "@type": "Question",
-          "name": "Is there an HOA, and are there deed restrictions?",
+          "name": "Is there an HOA, and what are the dues?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "HOA arrangements and any recorded deed restrictions or architectural guidelines are set by the developer and are not part of the public entitlement record we can point you to. Ask us and we will get you the current documents directly from the developer before you commit."
+            "text": "Yes. Membership in the San Sebastian Homeowners Association is mandatory for every lot owner, and annual dues are $360. The recorded Covenants, Conditions and Restrictions govern the community and supersede any earlier restrictions. All building plans and any later changes to a home, yard or driveway need approval from the San Sebastian Architectural Committee first. Common rules cover trash can screening, yard upkeep, parking in the garage or driveway only, no boats, trailers or RVs, and a prohibition on aggressive dog breeds. Owners who rent take responsibility for their tenants. Read the full documents in the Documents section."
           }
         },
         {
@@ -363,7 +363,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   display:flex;align-items:center;justify-content:space-between;
   height:96px;
 }
-.nav-logo{text-decoration:none;line-height:1;display:flex;align-items:center;gap:.7rem;margin-right:2.5rem}
+.nav-logo{text-decoration:none;line-height:1;display:flex;align-items:center;gap:.7rem;margin-right:1.2rem}
 .nav-logo-mark{height:60px;width:auto;display:block;flex-shrink:0}
 .nav-logo-text{display:flex;flex-direction:column}
 .nav-logo-top{
@@ -376,9 +376,9 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px;display:block;
   white-space:nowrap;
 }
-.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links{display:flex;align-items:center;gap:1rem;list-style:none}
 .nav-links a{
-  font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  font-size:.72rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;
   text-decoration:none;color:var(--sand);
   transition:color .25s;position:relative;padding-bottom:2px;
 }
@@ -388,7 +388,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 }
 .nav-links a:hover{color:var(--gold)}
 .nav-links a:hover::after{width:100%}
-.nav-links .btn{padding:.55rem 1.4rem}
+.nav-links .btn{padding:.55rem 1.15rem;font-size:.7rem}
 .hamburger{
   display:none;flex-direction:column;gap:5px;
   cursor:pointer;background:none;border:none;padding:.3rem;
@@ -555,11 +555,31 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   background:var(--gold);color:var(--white);
   padding:.4rem .9rem;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
 }
-.plat-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.2rem}
-.plat-actions .btn{padding:.75rem 1.6rem;font-size:.72rem}
-@media(max-width:480px){
-  .plat-actions{flex-direction:column}
-  .plat-actions .btn{justify-content:center}
+.plat-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem}
+.plat-actions .btn{
+  padding:1.15rem 2.4rem;font-size:.85rem;font-weight:700;letter-spacing:.1em;
+}
+/* High-visibility amber, for buttons that sit on the deep sage sections */
+.btn-highlight{
+  background:#F2B134;color:#23372F;
+  box-shadow:0 4px 18px rgba(0,0,0,.28);
+}
+.btn-highlight:hover{
+  background:#FFC751;color:#1C2C26;
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(242,177,52,.42);
+}
+.btn-highlight-outline{
+  background:transparent;color:#F2B134;border:2px solid #F2B134;
+}
+.btn-highlight-outline:hover{
+  background:#F2B134;color:#23372F;
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(242,177,52,.34);
+}
+@media(max-width:640px){
+  .plat-actions{flex-direction:column;gap:.8rem}
+  .plat-actions .btn{justify-content:center;padding:1.05rem 1.5rem}
 }
 .stats-row{
   display:grid;grid-template-columns:repeat(4,1fr);gap:0;
@@ -1069,6 +1089,55 @@ footer{background:#1c2f29;padding:5rem 0 2.5rem}
 .footer-legal a:hover{color:rgba(255,255,255,.5)}
 
 /* ══════════════════════════════════════════
+   SECTION 11 — HOA / BUILDER DOCUMENTS
+══════════════════════════════════════════ */
+#documents{background:var(--cream);padding:100px 0}
+.docs-header{text-align:center;max-width:700px;margin:0 auto 3.5rem}
+.docs-header .section-body{margin:0 auto;text-align:center}
+.docs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1140px;margin:0 auto}
+.doc-card{
+  background:var(--white);border-top:3px solid var(--gold);
+  box-shadow:0 2px 16px rgba(36,59,52,.06);
+  padding:1.8rem 1.6rem 1.5rem;
+  display:flex;flex-direction:column;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.doc-card:hover{transform:translateY(-4px);box-shadow:0 10px 34px rgba(36,59,52,.13)}
+.doc-icon{
+  width:44px;height:44px;flex-shrink:0;margin-bottom:1rem;
+  background:var(--gold-pale);color:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.6rem;font-weight:800;letter-spacing:.06em;
+}
+.doc-title{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--navy);line-height:1.25;margin-bottom:.45rem}
+.doc-desc{font-size:.8rem;line-height:1.7;color:#54514A;margin-bottom:1rem;flex:1}
+.doc-meta{
+  font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gray);margin-bottom:1.1rem;
+  display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;
+}
+.doc-meta span{display:inline-flex;align-items:center}
+.doc-meta span+span::before{content:'·';margin-right:.5rem;color:#C5BEB0}
+.doc-card .btn{width:100%;justify-content:center;padding:.8rem 1rem;font-size:.7rem}
+
+/* Card for a document that is not published on the site */
+.doc-card.on-request{border-top-color:var(--sand);background:#FBFAF7}
+.doc-card.on-request .doc-icon{background:var(--gray-light);color:var(--gray)}
+.doc-card.on-request .doc-title{color:#4A5F57}
+
+.docs-note{
+  max-width:820px;margin:2.8rem auto 0;padding:1.4rem 1.6rem;
+  background:var(--cream-dark);border-left:4px solid var(--gold);
+}
+.docs-note p{font-size:.78rem;line-height:1.75;color:#54514A}
+.docs-note p+p{margin-top:.6rem}
+.docs-note strong{color:var(--navy);font-weight:600}
+.docs-note a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(183,123,90,.35)}
+.docs-note a:hover{border-bottom-color:var(--gold)}
+@media(max-width:1024px){ .docs-grid{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:640px){ .docs-grid{grid-template-columns:1fr} }
+
+/* ══════════════════════════════════════════
    SECTION 10 — FAQ
 ══════════════════════════════════════════ */
 #faq{background:var(--cream-dark);padding:100px 0}
@@ -1168,10 +1237,14 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
   .map-wrap{min-height:400px}
   .loc-groups{grid-template-columns:1fr}
 }
-@media(max-width:768px){
-  .section-pad{padding:70px 0}
+/* Nav collapses to the hamburger well above the phone breakpoint, because eight
+   items plus the logo need roughly 1180px of header before they start to crowd. */
+@media(max-width:1180px){
   .nav-links{display:none}
   .hamburger{display:flex}
+}
+@media(max-width:768px){
+  .section-pad{padding:70px 0}
   .hero-stats-inner{grid-template-columns:1fr 1fr}
   .hero-stat:nth-child(2){border-right:none}
   #hero{flex-direction:column;justify-content:flex-end}
@@ -1209,6 +1282,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
   <a href="#commercial" onclick="closeMobile()">Commercial Pads</a>
   <a href="#gallery" onclick="closeMobile()">Photo Gallery</a>
   <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#documents" onclick="closeMobile()">Documents</a>
   <a href="#contact" class="btn btn-gold" onclick="closeMobile()" style="margin-top:1rem">Contact Us</a>
 </div>
 
@@ -1229,6 +1303,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
       <li><a href="#phases">Project Phases</a></li>
       <li><a href="#commercial">Commercial Pads</a></li>
       <li><a href="#gallery">Photo Gallery</a></li>
+      <li><a href="#documents">Documents</a></li>
       <li><a href="#contact" class="btn btn-gold">Contact Us</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -1337,8 +1412,8 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
           <div class="plat-map-hint"><span>🔍</span> Click for full plat</div>
         </div>
         <div class="plat-actions">
-          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=26.156937,-97.647051" target="_blank" rel="noopener" class="btn btn-gold">Get Directions &rarr;</a>
-          <a href="assets/san-sebastian-final-plat.pdf" class="btn btn-outline-white" download="San-Sebastian-Final-Plat.pdf">Download Plat</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=26.156937,-97.647051" target="_blank" rel="noopener" class="btn btn-highlight">Get Directions &rarr;</a>
+          <a href="assets/san-sebastian-final-plat.pdf" class="btn btn-highlight-outline" download="San-Sebastian-Final-Plat.pdf">Download Plat</a>
         </div>
       </div>
     </div>
@@ -1946,8 +2021,8 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
           <div class="faq-answer"><p>TxDOT's 2025 annual average daily traffic for the Business 77 segment the property fronts is <strong>21,883 vehicles per day</strong>. The two count stations bracketing the frontage report 20,115 and 21,883.</p><p>For comparison, TxDOT records roughly 6,100 vehicles per day on FM 1846 (Oscar Williams Road) and about 94,300 on the I-69E mainlanes nearby.</p></div>
         </details>
         <details class="faq-item">
-          <summary>Is there an HOA, and are there deed restrictions?</summary>
-          <div class="faq-answer"><p>HOA arrangements and any recorded deed restrictions or architectural guidelines are set by the developer and are not part of the public entitlement record we can point you to.</p><p>Ask us and we will get you the current documents directly from the developer before you commit.</p></div>
+          <summary>Is there an HOA, and what are the dues?</summary>
+          <div class="faq-answer"><p>Yes. Membership in the San Sebastian Homeowners Association is mandatory for every lot owner, and <strong>annual dues are $360</strong>. The recorded Covenants, Conditions and Restrictions govern the community and supersede any earlier restrictions.</p><p>All building plans and any later changes to a home, yard or driveway need approval from the San Sebastian Architectural Committee first. Common rules cover trash can screening, yard upkeep, parking in the garage or driveway only, no boats, trailers or RVs, and a prohibition on aggressive dog breeds. Owners who rent take responsibility for their tenants.</p><p>Read the full documents in the <a href="#documents">Documents</a> section.</p></div>
         </details>
         <details class="faq-item">
           <summary>Who do I contact?</summary>
@@ -1962,8 +2037,72 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
   </div>
 </section>
 
+
 <!-- ══════════════════════════════════════════
-     SECTION 11 — CONTACT
+     SECTION 11 — HOA / BUILDER DOCUMENTS
+══════════════════════════════════════════ -->
+<section id="documents">
+  <div class="container">
+    <div class="docs-header">
+      <span class="eyebrow reveal">Due Diligence</span>
+      <h2 class="section-title reveal reveal-d1">HOA &amp; Builder<br/><em>Documents</em></h2>
+      <span class="divider-gold reveal reveal-d1" style="margin:1.4rem auto"></span>
+      <p class="section-body reveal reveal-d2">The plat, offering memorandum and the full set of community governance documents, ready to download. Everything a buyer, builder or lender needs to complete due diligence on San Sebastian.</p>
+    </div>
+    <div class="docs-grid reveal reveal-d2">
+        <div class="doc-card">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-title">Recorded Final Plat</div>
+          <p class="doc-desc">The surveyed plat drawing for the 47.35-acre tract, showing lot lines, dimensions, easements, street rights-of-way and the three residential phases.</p>
+          <div class="doc-meta"><span>PDF</span><span>1 page</span><span>1.4 MB</span></div>
+          <a href="assets/san-sebastian-final-plat.pdf" class="btn btn-gold" download="San-Sebastian-Final-Plat.pdf">Download &darr;</a>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-title">Offering Memorandum</div>
+          <p class="doc-desc">Full lot detail package for the commercial pad sites, including site plan, acreage schedule, location context and market overview.</p>
+          <div class="doc-meta"><span>PDF</span><span>12 pages</span><span>5.0 MB</span></div>
+          <a href="assets/san-sebastian-lot-details.pdf" class="btn btn-gold" download="San-Sebastian-Lot-Details.pdf">Download &darr;</a>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">HOA</div>
+          <div class="doc-title">Covenants, Conditions &amp; Restrictions</div>
+          <p class="doc-desc">The recorded Declaration of Covenants, Conditions and Restrictions governing the subdivision, including the homeowners association, permitted uses, architectural control and enforcement. Supersedes previously recorded restrictions.</p>
+          <div class="doc-meta"><span>PDF</span><span>35 pages</span><span>0.4 MB</span></div>
+          <a href="assets/covenants-and-restrictions.pdf" class="btn btn-gold" download="San-Sebastian-Covenants-and-Restrictions.pdf">Download &darr;</a>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">BLDR</div>
+          <div class="doc-title">Builder Information &amp; HOA Process</div>
+          <p class="doc-desc">The four-step path for builders: plan submission to HOA management, the Builder Acknowledgment Form, written approval to begin construction, and the CC&amp;R compliance requirements that follow. Includes HOA management contacts.</p>
+          <div class="doc-meta"><span>PDF</span><span>1 page</span><span>13 KB</span></div>
+          <a href="assets/builder-info-and-hoa-process.pdf" class="btn btn-gold" download="San-Sebastian-Builder-Info-and-HOA-Process.pdf">Download &darr;</a>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">OWNER</div>
+          <div class="doc-title">New Owner Fact Sheet</div>
+          <p class="doc-desc">What every lot owner acknowledges at closing: mandatory HOA membership, annual dues, lot maintenance, Architectural Committee approval for plans and later changes, and the rules on parking, trash, pets and rentals. Provided in English and Spanish.</p>
+          <div class="doc-meta"><span>PDF</span><span>3 pages</span><span>Bilingual</span><span>41 KB</span></div>
+          <a href="assets/new-owner-fact-sheet.pdf" class="btn btn-gold" download="San-Sebastian-New-Owner-Fact-Sheet.pdf">Download &darr;</a>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">WIRE</div>
+          <div class="doc-title">Spectrum Equipment &amp; Wiring Guidelines</div>
+          <p class="doc-desc">Spectrum Ready panel placement and wiring standards issued by the HOA. Builders must show the panel location on the house plans submitted for architectural approval.</p>
+          <div class="doc-meta"><span>PDF</span><span>11 pages</span><span>1.0 MB</span></div>
+          <a href="assets/spectrum-equipment-guidelines.pdf" class="btn btn-gold" download="San-Sebastian-Spectrum-Equipment-Guidelines.pdf">Download &darr;</a>
+        </div>
+    </div>
+    <div class="docs-note reveal">
+      <p><strong>Need something not listed?</strong> Title commitments, survey exhibits, utility will-serve letters, drainage plans and the recorded PDD ordinance are available on request. Tell us what your lender, title company or builder needs and we will source it.</p>
+      <p><strong>Builders:</strong> plans go to HOA management for review before construction, and the Spectrum panel location must appear on the plans you submit. The builder process document above sets out the steps and the contacts.</p>
+      <p>Documents are provided for information only and are subject to change. Verify anything material with your own attorney, title company and lender before you rely on it. Contact <a href="mailto:mark.hanna@svn.com">mark.hanna@svn.com</a> or call <a href="tel:9563228001">(956) 322-8001</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 12 — CONTACT
 ══════════════════════════════════════════ -->
 <section id="contact">
   <div class="container">
@@ -2212,6 +2351,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
           <li><a href="#commercial">Commercial Pads</a></li>
           <li><a href="#gallery">Photo Gallery</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="#documents">Documents</a></li>
         </ul>
       </div>
       <div>
@@ -2229,6 +2369,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
         <ul class="footer-links">
           <li><a href="#contact">Schedule a Tour</a></li>
           <li><a href="assets/san-sebastian-final-plat.pdf" download="San-Sebastian-Final-Plat.pdf">Download Lot Map</a></li>
+          <li><a href="#documents">HOA &amp; Builder Docs</a></li>
           <li><a href="#contact">Commercial Inquiry</a></li>
           <li><a href="https://instagram.com/sansebastiansubdivision" target="_blank" rel="noopener">@sansebastiansubdivision</a></li>
         </ul>
