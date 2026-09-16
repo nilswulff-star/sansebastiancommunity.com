@@ -551,6 +551,12 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   background:var(--gold);color:var(--white);
   padding:.4rem .9rem;font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
 }
+.plat-actions{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.2rem}
+.plat-actions .btn{padding:.75rem 1.6rem;font-size:.72rem}
+@media(max-width:480px){
+  .plat-actions{flex-direction:column}
+  .plat-actions .btn{justify-content:center}
+}
 .stats-row{
   display:grid;grid-template-columns:repeat(4,1fr);gap:0;
   background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
@@ -1324,6 +1330,10 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
           <img src="assets/gallery/official-site-plan.jpg" alt="San Sebastian Official Site Plan" loading="lazy"/>
           <div class="plat-map-badge">Official Plat</div>
           <div class="plat-map-hint"><span>🔍</span> Click to enlarge</div>
+        </div>
+        <div class="plat-actions">
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=26.156937,-97.647051" target="_blank" rel="noopener" class="btn btn-gold">Get Directions &rarr;</a>
+          <a href="assets/san-sebastian-final-plat.pdf" class="btn btn-outline-white" download="San-Sebastian-Final-Plat.pdf">Download Plat</a>
         </div>
       </div>
     </div>
