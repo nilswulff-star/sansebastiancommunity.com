@@ -232,6 +232,7 @@ header{
 .btn-line{background:transparent;color:var(--navy);border-color:var(--navy)}
 .btn-line:hover{background:var(--navy);color:#fff}
 .pc-note{font-size:.66rem;color:var(--gray);line-height:1.6;padding:0 1.6rem 1.4rem}
+.pc-none{font-size:.84rem;line-height:1.75;color:var(--gray);padding:.9rem 0 .2rem}
 
 /* ── MOBILE ── */
 .sheet-grip{display:none}
@@ -403,8 +404,8 @@ function build(){
     p.setAttribute('tabindex','0');
     p.setAttribute('role','button');
     p.setAttribute('id',id);
+    p.dataset.i=i;
     p.setAttribute('aria-label',ariaFor(l));
-    p.addEventListener('click',e=>{e.stopPropagation();select(i)});
     p.addEventListener('keydown',e=>{
       if(e.key==='Enter'||e.key===' '){e.preventDefault();select(i)}
     });
@@ -458,13 +459,20 @@ $('mapwrap').addEventListener('wheel',e=>{
   zoomAt(e.deltaY>0?1.16:1/1.16,p.x,p.y);
 },{passive:false});
 
-let drag=null;
+let drag=null, downLot=null;
+const TAP=5;                       // px of movement still treated as a tap
 const pts=new Map();
 plat.addEventListener('pointerdown',e=>{
   pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
-  if(pts.size===1){ drag={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y,moved:0}; plat.setPointerCapture(e.pointerId); }
+  if(pts.size===1){
+    const t=e.target;
+    downLot=(t && t.classList && t.classList.contains('lot')) ? t : null;
+    drag={x:e.clientX,y:e.clientY,vx:VB.x,vy:VB.y,moved:0};
+  }else{
+    downLot=null;
+  }
 });
-plat.addEventListener('pointermove',e=>{
+window.addEventListener('pointermove',e=>{
   if(!pts.has(e.pointerId)) return;
   pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
   if(pts.size===2){ pinch(); return; }
@@ -472,8 +480,7 @@ plat.addEventListener('pointermove',e=>{
   const r=plat.getBoundingClientRect();
   const dx=(e.clientX-drag.x)/r.width*VB.w, dy=(e.clientY-drag.y)/r.height*VB.h;
   drag.moved=Math.max(drag.moved,Math.abs(e.clientX-drag.x)+Math.abs(e.clientY-drag.y));
-  if(drag.moved>4) plat.classList.add('dragging');
-  VB.x=drag.vx-dx; VB.y=drag.vy-dy; applyVB();
+  if(drag.moved>TAP){ plat.classList.add('dragging'); VB.x=drag.vx-dx; VB.y=drag.vy-dy; applyVB(); }
 });
 let lastPinch=0;
 function pinch(){
@@ -486,13 +493,20 @@ function pinch(){
   lastPinch=d;
 }
 function endPtr(e){
+  const wasDragging=drag;
   pts.delete(e.pointerId);
   if(pts.size<2) lastPinch=0;
-  if(pts.size===0){ setTimeout(()=>plat.classList.remove('dragging'),0); drag=null; }
+  if(pts.size>0) return;
+  plat.classList.remove('dragging');
+  // A tap, not a pan: select the lot under the finger, or clear if it was empty map.
+  if(e.type==='pointerup' && wasDragging && wasDragging.moved<=TAP){
+    if(downLot && !downLot.classList.contains('dim')) select(+downLot.dataset.i);
+    else if(!downLot) deselect();
+  }
+  drag=null; downLot=null;
 }
-plat.addEventListener('pointerup',endPtr);
-plat.addEventListener('pointercancel',endPtr);
-plat.addEventListener('click',e=>{ if(e.target===plat) deselect(); });
+window.addEventListener('pointerup',endPtr);
+window.addEventListener('pointercancel',endPtr);
 
 /* ── FILTERS ── */
 const active=new Set(['available','pre-sale','reserved','sold']);
@@ -602,7 +616,7 @@ function select(i){
   if(selected!=null && LOTS[selected]._el) LOTS[selected]._el.classList.remove('sel');
   selected=i; l._el.classList.add('sel');
   const isCom=l.kind==='commercial';
-  $('pcKind').textContent=isCom?'Commercial Pad Site':'Residential Lot · Phase '+(l.phase||'—');
+  $('pcKind').textContent=isCom?'Commercial Pad Site':('Residential Lot'+(l.phase?' · Phase '+l.phase:''));
   $('pcName').textContent=isCom?('Pad '+l.label.replace('Lot ','')):l.label;
   const b=$('pcBadge');
   b.className='badge '+cls(l.status);
@@ -619,7 +633,9 @@ function select(i){
   if(!isCom && l.phase) rows.push(['Phase', 'Phase '+l.phase]);
   if(isCom) rows.push(['Frontage','W Business 77']);
   if(l.price && l.sqft) rows.push(['Price per sq ft','$'+(l.price/l.sqft).toFixed(2)]);
-  $('pcRows').innerHTML=rows.map(r=>`<div class="prow"><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('');
+  $('pcRows').innerHTML = rows.length
+    ? rows.map(r=>`<div class="prow"><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')
+    : '<p class="pc-none">This lot has sold and its details are no longer published. Ask us about comparable lots still available.</p>';
 
   const name=isCom?('Commercial Pad '+l.label.replace('Lot ','')):l.label;
   $('pcEnquire').href='index.html?lot='+encodeURIComponent(name)+'#contact';
