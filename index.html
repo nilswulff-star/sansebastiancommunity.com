@@ -528,10 +528,14 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .phase-tab:hover:not(.active){background:rgba(255,255,255,.12);color:var(--white)}
 .plat-map-frame{
   position:relative;border:2px solid rgba(214,194,161,.35);
-  overflow:hidden;background:#1d2f29;
-  cursor:zoom-in;
+  overflow:hidden;background:#F7F5F1;
+  cursor:zoom-in;aspect-ratio:1010/706;
 }
-.plat-map-frame img{width:100%;display:block;transition:transform .4s var(--ease);clip-path:inset(0 1.5% 0 0)}
+.plat-map-frame img{
+  width:100%;height:100%;display:block;
+  object-fit:cover;object-position:left center;
+  transition:transform .4s var(--ease);
+}
 .plat-map-frame:hover img{transform:scale(1.02)}
 .plat-map-hint{
   position:absolute;bottom:1rem;left:1rem;
@@ -791,6 +795,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .lb-inner{position:relative;max-width:1100px;width:100%;max-height:90vh}
 #lb-img{max-width:100%;max-height:80vh;object-fit:contain;display:block;margin:0 auto;
   box-shadow:0 20px 80px rgba(0,0,0,.6);clip-path:inset(0 1.5% 0 0)}
+#lb-img.nocrop{clip-path:none}
 .lb-close{
   position:absolute;top:-3rem;right:0;
   background:none;border:none;color:var(--white);
@@ -1329,7 +1334,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
         <div class="plat-map-frame" onclick="openPlatLightbox()" role="button" tabindex="0" aria-label="Open larger view of site plan" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPlatLightbox()}">
           <img src="assets/gallery/official-site-plan.jpg" alt="San Sebastian Official Site Plan" loading="lazy"/>
           <div class="plat-map-badge">Official Plat</div>
-          <div class="plat-map-hint"><span>🔍</span> Click to enlarge</div>
+          <div class="plat-map-hint"><span>🔍</span> Click for full plat</div>
         </div>
         <div class="plat-actions">
           <a href="https://www.google.com/maps/dir/?api=1&amp;destination=26.156937,-97.647051" target="_blank" rel="noopener" class="btn btn-gold">Get Directions &rarr;</a>
@@ -2605,6 +2610,7 @@ let platMode=false;
 
 function openLightbox(index){
   platMode=false;
+  document.getElementById('lb-img').classList.remove('nocrop');
   currentIndex=index;
   track('gallery_image_open', {image_name: (allItems[index].getAttribute('data-src')||'').split('/').pop()});
   const item=allItems[index];
@@ -2647,6 +2653,7 @@ allItems.forEach((item,i)=>{
 function openSoloLightbox(src,caption){
   platMode=true;
   const img=document.getElementById('lb-img');
+  img.classList.add('nocrop');   // show the image whole, edge artifact trim is for the gallery
   img.src=src;
   img.alt=caption;
   document.getElementById('lbCaption').textContent=caption+' — click anywhere to close';
