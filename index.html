@@ -1474,7 +1474,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
           </div>
         </div>
         <div class="lots-btns reveal reveal-d4">
-          <a href="https://subdivision-plat-app.vercel.app/c/san-sebastian-mpc" target="_blank" rel="noopener" class="btn btn-gold">View Currently Available Lots</a>
+          <a href="lots.html" class="btn btn-gold">View Currently Available Lots</a>
           <a href="assets/san-sebastian-final-plat.pdf" class="btn btn-outline-navy" download="San-Sebastian-Final-Plat.pdf">Download Plan</a>
         </div>
       </div>
@@ -1987,7 +1987,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
         </details>
         <details class="faq-item">
           <summary>What is available right now, and what do lots cost?</summary>
-          <div class="faq-answer"><p>As of <strong>September 2026</strong>, 51 residential lots are available, priced from <strong>$64,179 to $140,299</strong>. A further 54 Phase 3 lots are offered as pre-sale. All eight commercial pad sites are available; pricing for those is on request.</p><p>Availability and pricing change as lots sell. The <a href="https://subdivision-plat-app.vercel.app/c/san-sebastian-mpc" target="_blank" rel="noopener">live lot map</a> always shows the current position.</p></div>
+          <div class="faq-answer"><p>As of <strong>September 2026</strong>, 51 residential lots are available, priced from <strong>$64,179 to $140,299</strong>. A further 54 Phase 3 lots are offered as pre-sale. All eight commercial pad sites are available; pricing for those is on request.</p><p>Availability and pricing change as lots sell. The <a href="lots.html">interactive lot map</a> always shows the current position.</p></div>
         </details>
         <details class="faq-item">
           <summary>How big are the lots, and what can I build?</summary>
@@ -2487,7 +2487,7 @@ document.addEventListener('click', function(e){
   else if(href.startsWith('mailto:')) track('contact_email', {method:'email', email_address:href.replace('mailto:','')});
   else if(href.endsWith('.pdf') || a.hasAttribute('download'))
     track('file_download', {file_name:href.split('/').pop(), link_text:a.textContent.trim().slice(0,60)});
-  else if(href.includes('subdivision-plat-app'))  track('lot_map_open',     {link_text:a.textContent.trim().slice(0,60)});
+  else if(/(^|\/)lots(\.html)?$/.test(href))       track('lot_map_open',     {link_text:a.textContent.trim().slice(0,60)});
   else if(href.includes('rainearchitects'))       track('virtual_tour_open',{link_text:a.textContent.trim().slice(0,60)});
   else if(href.includes('svnhannasolutionscre'))  track('listing_open',     {link_text:a.textContent.trim().slice(0,60)});
   else if(href.includes('instagram.com'))         track('social_click',     {network:'instagram'});
