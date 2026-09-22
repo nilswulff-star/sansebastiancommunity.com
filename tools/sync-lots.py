@@ -121,6 +121,26 @@ for l in lots:
         l['n'] = int(d.group(1)) if d else 0
 lots.sort(key=lambda l: (l['kind'] != 'residential', l.get('platRef', l['n'])))
 
+# Apply manual corrections from assets/lot-overrides.json. These win over the
+# source app, so a re-sync never undoes a correction made here.
+OVERRIDES = 'assets/lot-overrides.json'
+applied = 0
+if os.path.exists(OVERRIDES):
+    ov = json.load(open(OVERRIDES, encoding='utf-8')).get('lots', {})
+    for l in lots:
+        key = ('Commercial P%s-%s' % (l.get('phase'), l['n'])) if l['kind'] == 'commercial' else l['label']
+        if key in ov:
+            l.update(ov[key])
+            applied += 1
+    unknown = set(ov) - {(('Commercial P%s-%s' % (x.get('phase'), x['n'])) if x['kind'] == 'commercial' else x['label']) for x in lots}
+    if unknown:
+        print('WARNING: overrides not matched to any lot:', ', '.join(sorted(unknown)))
+
+# A sold lot never publishes a price.
+for l in lots:
+    if l.get('status') == 'sold':
+        l.pop('price', None)
+
 out = {'viewBox': viewBox, 'lots': lots, 'labels': labels}
 dest = 'assets/lots.json'
 os.makedirs('assets', exist_ok=True)
@@ -140,4 +160,5 @@ print('with price    :', len(priced))
 print('available $   :', (min(l["price"] for l in avail), max(l["price"] for l in avail)) if avail else 'n/a')
 print('with address  :', sum(1 for l in lots if l.get('address')))
 print('file          :', dest, os.path.getsize(dest), 'bytes')
+print('overrides     :', applied)
 print('sample        :', json.dumps({k: v for k, v in lots[0].items() if k != 'points'}))

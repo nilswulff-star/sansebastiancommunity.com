@@ -1,0 +1,16 @@
+{
+  "_readme": [
+    "Manual corrections applied on top of whatever tools/sync-lots.py pulls from the",
+    "developer's plat app. Anything set here wins, so a re-sync will not undo it.",
+    "",
+    "Key residential lots by their label, e.g. \"Lot 102\".",
+    "Key commercial pads by phase and pad number, e.g. \"Commercial P2-3\".",
+    "",
+    "Fields you can set: status (available | reserved | sold | pre-sale),",
+    "price, sqft, acres, address, phase.",
+    "Setting status to sold automatically hides the price on the map."
+  ],
+  "lots": {
+    "Lot 102": { "status": "sold" }
+  }
+}

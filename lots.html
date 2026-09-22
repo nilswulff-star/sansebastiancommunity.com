@@ -390,6 +390,8 @@ let VB={x:0,y:0,w:100,h:100}, HOME=null;
 const STATUS_LABEL={'available':'Available','pre-sale':'Pre-Sale','reserved':'Reserved','sold':'Sold'};
 const cls = s => s==='pre-sale' ? 'presale' : s;
 const money = n => '$'+n.toLocaleString('en-US');
+/* A sold lot never publishes a price, whatever the source data holds. */
+const shownPrice = l => (l.status==='sold' ? null : (l.price || null));
 const num   = n => n.toLocaleString('en-US',{maximumFractionDigits:0});
 
 /* ── LOAD ── */
@@ -445,7 +447,7 @@ function ariaFor(l){
     ? 'Commercial pad, Phase '+l.phase+' Lot '+l.n
     : l.label, STATUS_LABEL[l.status]||l.status];
   if(l.phase && l.kind!=='commercial') bits.push('Phase '+l.phase);
-  if(l.price) bits.push(money(l.price));
+  const pv=shownPrice(l); if(pv) bits.push(money(pv));
   if(l.sqft)  bits.push(num(l.sqft)+' square feet');
   if(l.address) bits.push(l.address);
   return bits.join(', ');
@@ -554,7 +556,7 @@ function applyFilters(){
   LOTS.forEach((l,i)=>{
     let ok=active.has(l.status);
     if(ok && ph){ ok = ph==='commercial' ? l.kind==='commercial' : l.phase===ph; }
-    if(ok && pr) ok=inRange(l.price,pr);
+    if(ok && pr) ok=inRange(shownPrice(l),pr);
     if(ok && sz) ok=inRange(l.sqft,sz);
     l._on=ok; shown+=ok?1:0;
     l._el.classList.toggle('dim',!ok);
@@ -585,7 +587,7 @@ function renderCounts(shown){
   });
   const availRes=all.filter(l=>l.status==='available'&&l.kind==='residential');
   const availCom=all.filter(l=>l.status==='available'&&l.kind==='commercial');
-  const prices=availRes.filter(l=>l.price).map(l=>l.price);
+  const prices=availRes.map(shownPrice).filter(Boolean);
   $('hdrStat').innerHTML=
     `<span class="st"><b>${availRes.length}</b><span>Lots Available</span></span>`+
     `<span class="st"><b>${availCom.length}</b><span>Pads Available</span></span>`+
@@ -610,8 +612,9 @@ function renderList(){
                l.sqft?num(l.sqft)+' sq ft':null,
                l.phase?'Phase '+l.phase:null,
                l.address||null].filter(Boolean).join(' · ');
-    const price=l.price?money(l.price):(isCom?'On request':'—');
-    const plabel=l.price?(l.status==='sold'?'Sold at':'List'):(isCom?'Pricing':'');
+    const lp=shownPrice(l);
+    const price=lp?money(lp):(isCom?'On request':(l.status==='sold'?'Sold':'—'));
+    const plabel=lp?'List':(isCom?'Pricing':'');
     return `<button class="lrow ${cls(l.status)}${isCom?' is-commercial':''}" data-i="${i}">
       <span class="lrow-main"><span class="lrow-t">${name}</span><span class="lrow-s">${sub}</span></span>
       <span class="lrow-p">${price}${plabel?`<small>${plabel}</small>`:''}</span>
@@ -645,7 +648,8 @@ function select(i){
   b.innerHTML='<span class="dot" style="background:rgba(0,0,0,.28)"></span>'+
     (isCom ? 'Commercial · '+(STATUS_LABEL[l.status]||l.status) : (STATUS_LABEL[l.status]||l.status));
 
-  if(l.price){ $('pcPrice').textContent=money(l.price); $('pcPriceLbl').textContent=l.status==='sold'?'Last list price':'List price'; $('pcPriceWrap').style.display=''; }
+  const pv=shownPrice(l);
+  if(pv){ $('pcPrice').textContent=money(pv); $('pcPriceLbl').textContent='List price'; $('pcPriceWrap').style.display=''; }
   else if(isCom){ $('pcPrice').textContent='On request'; $('pcPriceLbl').textContent='Pricing'; $('pcPriceWrap').style.display=''; }
   else { $('pcPriceWrap').style.display='none'; }
 
@@ -659,7 +663,7 @@ function select(i){
     rows.push(['Frontage','W Business 77']);
     if(l.platRef) rows.push(['Recorded plat','Lot '+l.platRef]);
   }
-  if(l.price && l.sqft) rows.push(['Price per sq ft','$'+(l.price/l.sqft).toFixed(2)]);
+  if(pv && l.sqft) rows.push(['Price per sq ft','$'+(pv/l.sqft).toFixed(2)]);
   $('pcRows').innerHTML = rows.length
     ? rows.map(r=>`<div class="prow"><dt>${r[0]}</dt><dd>${r[1]}</dd></div>`).join('')
     : '<p class="pc-none">This lot has sold and its details are no longer published. Ask us about comparable lots still available.</p>';
