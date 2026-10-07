@@ -105,7 +105,7 @@
       "@id": "https://sansebastiancommunity.com/#broker",
       "name": "SVN | Hanna Solutions Commercial Real Estate",
       "description": "Exclusive listing broker for the San Sebastian commercial pad sites.",
-      "telephone": "+1-956-322-8001",
+      "telephone": "+1-956-322-4001",
       "email": "mark.hanna@svn.com",
       "image": "https://sansebastiancommunity.com/assets/svn-logo.png",
       "areaServed": {
@@ -114,11 +114,28 @@
       },
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "San Benito",
+        "streetAddress": "1001 E Jackson Ave, Suite A",
+        "addressLocality": "McAllen",
         "addressRegion": "TX",
-        "postalCode": "78586",
+        "postalCode": "78501",
         "addressCountry": "US"
-      }
+      },
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "Mark Hanna, CCIM",
+          "jobTitle": "Managing Director",
+          "telephone": "+1-956-821-8001",
+          "email": "mark.hanna@svn.com"
+        },
+        {
+          "@type": "Person",
+          "name": "Eric Carrizales, CCIM, CPM",
+          "jobTitle": "Advisor",
+          "telephone": "+1-956-778-3449",
+          "email": "eric.carrizales@svn.com"
+        }
+      ]
     },
     {
       "@type": "WebSite",
@@ -146,7 +163,7 @@
           "name": "What is available right now, and what do lots cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "As of September 2026, 51 residential lots are available, priced from $64,179 to $140,299. A further 54 Phase 3 lots are offered as pre-sale. All eight commercial pad sites are available; pricing for those is on request. Availability and pricing change as lots sell. The live lot map always shows the current position."
+            "text": "As of September 2026, 51 residential lots are available, priced from $64,179 to $140,299. A further 54 Phase 3 lots are offered as pre-sale. All eight commercial pad sites are available; pricing for those is on request. Availability and pricing change as lots sell. The interactive lot map always shows the current position."
           }
         },
         {
@@ -226,7 +243,7 @@
           "name": "Who do I contact?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Commercial pad sites are listed exclusively by SVN | Hanna Solutions Commercial Real Estate. Call (956) 322-8001 or email mark.hanna@svn.com. Residential lots are handled by Alliance Real Estate Group. Contact Daniela Pacheco at (956) 369-2556 or Pamela Perez at (956) 494-6128. Or use the contact form and your enquiry routes to the right team automatically."
+            "text": "Commercial pad sites are listed exclusively by SVN | Hanna Solutions Commercial Real Estate. Call the office on (956) 322-4001, or reach Mark Hanna, CCIM on (956) 821-8001 or Eric Carrizales, CCIM, CPM on (956) 778-3449. Residential lots are handled by Alliance Real Estate Group. Contact Daniela Pacheco at (956) 369-2556 or Pamela Perez at (956) 494-6128. Or use the contact form and your enquiry routes to the right team automatically."
           }
         }
       ]
@@ -700,7 +717,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
    SECTION 5 — COMMERCIAL
 ══════════════════════════════════════════ */
 #commercial{background:var(--cream-dark);padding:100px 0}
-.commercial-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem 3.5rem;align-items:start}
+.commercial-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:3.4rem 3.5rem;align-items:start}
 .commercial-img{position:relative;overflow:hidden}
 .commercial-img img{width:100%;display:block;transition:transform .5s var(--ease);clip-path:inset(0 1.5% 0 0)}
 .commercial-img:hover img{transform:scale(1.04)}
@@ -713,11 +730,11 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .traffic-badge-lbl{font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-top:.2rem}
 .highlight-box{
   background:var(--navy);color:var(--white);
-  padding:1.8rem 2rem;margin:2rem 0;
+  padding:1.8rem 2rem;margin:2.2rem 0 0;
   border-left:4px solid var(--gold);
 }
 .highlight-box p{font-size:.85rem;line-height:1.75;color:rgba(255,255,255,.75)}
-.business-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem}
+.business-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:0}
 .tag{
   padding:.45rem 1.1rem;font-size:.7rem;font-weight:600;
   letter-spacing:.08em;text-transform:uppercase;
@@ -731,9 +748,10 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 /* ── Commercial: acquisition options, pad schedule, demographics ── */
 #commercial .container{max-width:1340px}
 .comm-intro{grid-column:1/-1;max-width:980px}
+.comm-intro .section-body{margin-bottom:.4rem}
 .comm-intro .opt-grid{max-width:none}
 .comm-detail{min-width:0}
-.opt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin:1.6rem 0 2rem}
+.opt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:0 0 .5rem}
 .opt{
   background:var(--white);border-top:3px solid var(--gold);
   padding:1.2rem 1.1rem 1.1rem;box-shadow:0 2px 14px rgba(36,59,52,.07);
@@ -747,7 +765,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .opt-u{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:.7rem;line-height:1.4}
 .opt-d{font-size:.76rem;line-height:1.6;color:#5B584F;margin-top:auto}
 
-.pad-table{width:100%;border-collapse:collapse;margin:.4rem 0 1.4rem;background:var(--white);box-shadow:0 2px 14px rgba(36,59,52,.07)}
+.pad-table{width:100%;border-collapse:collapse;margin:0;background:var(--white);box-shadow:0 2px 14px rgba(36,59,52,.07)}
 .pad-table th,.pad-table td{padding:.6rem .85rem;text-align:right;font-size:.8rem;border-bottom:1px solid var(--gray-light)}
 .pad-table th:first-child,.pad-table td:first-child{text-align:left}
 .pad-table thead th{
@@ -763,13 +781,17 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
 .pad-table tfoot td{font-weight:800;color:var(--navy);background:var(--cream-dark);border-bottom:none}
 .table-scroll{overflow-x:auto}
 
-.demo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-light);margin:.3rem 0 1.6rem;border:1px solid var(--gray-light)}
+.demo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-light);margin:0;border:1px solid var(--gray-light)}
 .demo{background:var(--white);padding:1.1rem .9rem;text-align:center}
 .demo-n{font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--navy);line-height:1}
 .demo-l{font-size:.58rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gray);margin-top:.35rem;line-height:1.45}
 
-.sub-label{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:.7rem}
-.commercial-btns{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.85rem}
+.sub-label{
+  font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--navy);margin:2.2rem 0 .85rem;
+}
+.comm-detail>.sub-label:first-child{margin-top:0}
+.commercial-btns{margin-top:2.4rem;display:flex;flex-wrap:wrap;gap:.85rem}
 .commercial-btns .btn{flex:1 1 220px;justify-content:center;padding:1.05rem 1.4rem;font-size:.78rem}
 
 /* Imagery: one lead image plus an even grid, all on a consistent ratio */
@@ -2205,7 +2227,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
         </details>
         <details class="faq-item">
           <summary>Who do I contact?</summary>
-          <div class="faq-answer"><p><strong>Commercial pad sites</strong> are listed exclusively by SVN | Hanna Solutions Commercial Real Estate. Call <a href="tel:9563228001">(956) 322-8001</a> or email <a href="mailto:mark.hanna@svn.com">mark.hanna@svn.com</a>.</p><p><strong>Residential lots</strong> are handled by Alliance Real Estate Group. Contact Daniela Pacheco at <a href="tel:9563692556">(956) 369-2556</a> or Pamela Perez at <a href="tel:9564946128">(956) 494-6128</a>.</p><p>Or use the <a href="#contact">contact form</a> and your enquiry routes to the right team automatically.</p></div>
+          <div class="faq-answer"><p><strong>Commercial pad sites</strong> are listed exclusively by SVN | Hanna Solutions Commercial Real Estate. Call the office on <a href="tel:9563224001">(956) 322-4001</a>, or reach Mark Hanna, CCIM on <a href="tel:9568218001">(956) 821-8001</a> or Eric Carrizales, CCIM, CPM on <a href="tel:9567783449">(956) 778-3449</a>.</p><p><strong>Residential lots</strong> are handled by Alliance Real Estate Group. Contact Daniela Pacheco at <a href="tel:9563692556">(956) 369-2556</a> or Pamela Perez at <a href="tel:9564946128">(956) 494-6128</a>.</p><p>Or use the <a href="#contact">contact form</a> and your enquiry routes to the right team automatically.</p></div>
         </details>
       </div>
     </div>
@@ -2275,7 +2297,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
     <div class="docs-note reveal">
       <p><strong>Need something not listed?</strong> Title commitments, survey exhibits, utility will-serve letters, drainage plans and the recorded PDD ordinance are available on request. Tell us what your lender, title company or builder needs and we will source it.</p>
       <p><strong>Builders:</strong> plans go to HOA management for review before construction, and the Spectrum panel location must appear on the plans you submit. Request the builder process document above and we will send it with the HOA management contacts the same day.</p>
-      <p>Documents are provided for information only and are subject to change. Verify anything material with your own attorney, title company and lender before you rely on it. Contact <a href="mailto:mark.hanna@svn.com">mark.hanna@svn.com</a> or call <a href="tel:9563228001">(956) 322-8001</a>.</p>
+      <p>Documents are provided for information only and are subject to change. Verify anything material with your own attorney, title company and lender before you rely on it. Contact <a href="mailto:mark.hanna@svn.com">mark.hanna@svn.com</a> or call <a href="tel:9563224001">(956) 322-4001</a>.</p>
     </div>
   </div>
 </section>
@@ -2295,31 +2317,38 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
           <p class="section-body white reveal reveal-d2">Our team at SVN | Hanna Solutions Commercial Real Estate is ready to answer your questions about commercial pad sites, pricing, and everything San Sebastian has to offer.</p>
           <div class="contact-details reveal reveal-d3">
             <div class="cd-item">
-              <div class="cd-icon">📍</div>
+              <div class="cd-icon">👤</div>
               <div>
-                <div class="cd-label">Property Address</div>
-                <div class="cd-value">322–326 FM1846, San Benito, TX 78586</div>
+                <div class="cd-label">Mark Hanna, CCIM · Managing Director</div>
+                <div class="cd-value"><a href="tel:9568218001">(956) 821-8001</a> mobile · <a href="mailto:mark.hanna@svn.com">mark.hanna@svn.com</a></div>
+              </div>
+            </div>
+            <div class="cd-item">
+              <div class="cd-icon">👤</div>
+              <div>
+                <div class="cd-label">Eric Carrizales, CCIM, CPM · Advisor</div>
+                <div class="cd-value"><a href="tel:9567783449">(956) 778-3449</a> mobile · <a href="mailto:eric.carrizales@svn.com">eric.carrizales@svn.com</a></div>
               </div>
             </div>
             <div class="cd-item">
               <div class="cd-icon">📞</div>
               <div>
                 <div class="cd-label">Office</div>
-                <div class="cd-value"><a href="tel:9563228001">(956) 322-8001</a></div>
-              </div>
-            </div>
-            <div class="cd-item">
-              <div class="cd-icon">📱</div>
-              <div>
-                <div class="cd-label">Cell</div>
                 <div class="cd-value"><a href="tel:9563224001">(956) 322-4001</a></div>
               </div>
             </div>
             <div class="cd-item">
-              <div class="cd-icon">✉️</div>
+              <div class="cd-icon">🏢</div>
               <div>
-                <div class="cd-label">Email</div>
-                <div class="cd-value"><a href="mailto:mark.hanna@svn.com">mark.hanna@svn.com</a></div>
+                <div class="cd-label">SVN | Hanna Solutions CRE</div>
+                <div class="cd-value">1001 E Jackson Ave, Suite A<br/>McAllen, TX 78501</div>
+              </div>
+            </div>
+            <div class="cd-item">
+              <div class="cd-icon">📍</div>
+              <div>
+                <div class="cd-label">Property</div>
+                <div class="cd-value">W Business 77, San Benito, TX 78586</div>
               </div>
             </div>
             <div class="cd-item">
@@ -2333,7 +2362,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
           <div class="social-row reveal reveal-d4">
             <a href="https://instagram.com/sansebastiansubdivision" target="_blank" rel="noopener" class="soc-btn" title="Instagram">ig</a>
             <a href="mailto:mark.hanna@svn.com" class="soc-btn" title="Email">@</a>
-            <a href="tel:9563228001" class="soc-btn" title="Call">☎</a>
+            <a href="tel:9563224001" class="soc-btn" title="Call">☎</a>
           </div>
         </div>
 
@@ -2344,8 +2373,8 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
             <div class="cd-item">
               <div class="cd-icon">📍</div>
               <div>
-                <div class="cd-label">Property Address</div>
-                <div class="cd-value">322–326 FM1846, San Benito, TX 78586</div>
+                <div class="cd-label">Property</div>
+                <div class="cd-value">W Business 77, San Benito, TX 78586</div>
               </div>
             </div>
             <div class="cd-item">
@@ -2517,7 +2546,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
         <div class="social-row" style="margin-top:0">
           <a href="https://instagram.com/sansebastiansubdivision" target="_blank" rel="noopener" class="soc-btn">ig</a>
           <a href="mailto:mark.hanna@svn.com" class="soc-btn">@</a>
-          <a href="tel:9563228001" class="soc-btn">☎</a>
+          <a href="tel:9563224001" class="soc-btn">☎</a>
         </div>
       </div>
       <div>
@@ -2536,10 +2565,11 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
       <div>
         <div class="footer-col-title">Contact</div>
         <ul class="footer-links">
-          <li><a href="tel:9563228001">(956) 322-8001 — Office</a></li>
-          <li><a href="tel:9563224001">(956) 322-4001 — Cell</a></li>
+          <li><a href="tel:9563224001">(956) 322-4001 — Office</a></li>
+          <li><a href="tel:9568218001">(956) 821-8001 — Mark Hanna</a></li>
+          <li><a href="tel:9567783449">(956) 778-3449 — Eric Carrizales</a></li>
           <li><a href="mailto:mark.hanna@svn.com">mark.hanna@svn.com</a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=26.156937,-97.647051" target="_blank" rel="noopener">322–326 FM1846</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=26.156937,-97.647051" target="_blank" rel="noopener">W Business 77</a></li>
           <li><a href="https://www.google.com/maps/search/?api=1&amp;query=26.156937,-97.647051" target="_blank" rel="noopener">San Benito, TX 78586</a></li>
         </ul>
       </div>
@@ -2555,7 +2585,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2026 SVN | Hanna Solutions Commercial Real Estate. All rights reserved. Equal Housing Opportunity. Prices, plans, and availability subject to change without notice.</p>
+      <p class="footer-copy">© 2026 SVN | Hanna Solutions Commercial Real Estate · Broker License #9007459. All rights reserved. Equal Housing Opportunity. Prices, plans, and availability subject to change without notice.</p>
       <div class="footer-legal">
         <a href="privacy.html">Privacy Policy</a>
         <a href="https://www.hud.gov/program_offices/fair_housing_equal_opp" target="_blank" rel="noopener">Fair Housing</a>
@@ -2567,7 +2597,7 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
 <!-- ══ STICKY MOBILE CTA ══ -->
 <div id="stickyCta" aria-label="Quick contact">
   <div class="sticky-inner">
-    <a href="tel:9563228001" class="sticky-btn sticky-call"><span class="sticky-icon">&#9742;</span> Call</a>
+    <a href="tel:9563224001" class="sticky-btn sticky-call"><span class="sticky-icon">&#9742;</span> Call</a>
     <a href="#contact" class="sticky-btn sticky-enquire"><span class="sticky-icon">&#9993;</span> Enquire</a>
   </div>
 </div>
