@@ -11,6 +11,48 @@
     "Setting status to sold automatically hides the price on the map."
   ],
   "lots": {
-    "Lot 102": { "status": "sold" }
+    "Lot 102": {
+      "status": "sold"
+    },
+    "Commercial P1-1": {
+      "acres": 1.6,
+      "sqft": 69480,
+      "price": 1042200
+    },
+    "Commercial P1-2": {
+      "acres": 1.03,
+      "sqft": 44688,
+      "price": 670320
+    },
+    "Commercial P1-3": {
+      "acres": 1.24,
+      "sqft": 54000,
+      "price": 810000
+    },
+    "Commercial P1-4": {
+      "acres": 1.24,
+      "sqft": 54000,
+      "price": 810000
+    },
+    "Commercial P2-1": {
+      "acres": 1.24,
+      "sqft": 54000,
+      "price": 810000
+    },
+    "Commercial P2-2": {
+      "acres": 1.24,
+      "sqft": 54000,
+      "price": 810000
+    },
+    "Commercial P2-3": {
+      "acres": 1.37,
+      "sqft": 59683,
+      "price": 895245
+    },
+    "Commercial P2-4": {
+      "acres": 1.01,
+      "sqft": 44069,
+      "price": 661035
+    }
   }
 }

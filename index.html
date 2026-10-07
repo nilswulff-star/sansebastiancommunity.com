@@ -700,7 +700,7 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
    SECTION 5 — COMMERCIAL
 ══════════════════════════════════════════ */
 #commercial{background:var(--cream-dark);padding:100px 0}
-.commercial-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:6rem;align-items:start}
+.commercial-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem 3.5rem;align-items:start}
 .commercial-img{position:relative;overflow:hidden}
 .commercial-img img{width:100%;display:block;transition:transform .5s var(--ease);clip-path:inset(0 1.5% 0 0)}
 .commercial-img:hover img{transform:scale(1.04)}
@@ -726,6 +726,90 @@ body{font-family:'Manrope',sans-serif;background:#F3EFE7;color:#2E2E2B;overflow-
   transition:background .2s;
 }
 .tag:hover{background:var(--gold);color:var(--white)}
+
+
+/* ── Commercial: acquisition options, pad schedule, demographics ── */
+#commercial .container{max-width:1340px}
+.comm-intro{grid-column:1/-1;max-width:980px}
+.comm-intro .opt-grid{max-width:none}
+.comm-detail{min-width:0}
+.opt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin:1.6rem 0 2rem}
+.opt{
+  background:var(--white);border-top:3px solid var(--gold);
+  padding:1.2rem 1.1rem 1.1rem;box-shadow:0 2px 14px rgba(36,59,52,.07);
+  display:flex;flex-direction:column;
+  transition:transform .25s var(--ease),box-shadow .25s;
+}
+.opt:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(36,59,52,.13)}
+.opt-n{font-size:.55rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+.opt-t{font-family:var(--serif);font-size:1.18rem;font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:.55rem}
+.opt-p{font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--charcoal);line-height:1;margin-bottom:.2rem}
+.opt-u{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:.7rem;line-height:1.4}
+.opt-d{font-size:.76rem;line-height:1.6;color:#5B584F;margin-top:auto}
+
+.pad-table{width:100%;border-collapse:collapse;margin:.4rem 0 1.4rem;background:var(--white);box-shadow:0 2px 14px rgba(36,59,52,.07)}
+.pad-table th,.pad-table td{padding:.6rem .85rem;text-align:right;font-size:.8rem;border-bottom:1px solid var(--gray-light)}
+.pad-table th:first-child,.pad-table td:first-child{text-align:left}
+.pad-table thead th{
+  font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--navy);background:var(--cream-dark);
+}
+.pad-table tbody td{color:#5B584F;font-variant-numeric:tabular-nums}
+.pad-table tbody td:first-child{color:var(--charcoal);font-weight:600}
+.pad-table .ph td{
+  background:var(--cream);font-size:.6rem;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--navy);text-align:left;
+}
+.pad-table tfoot td{font-weight:800;color:var(--navy);background:var(--cream-dark);border-bottom:none}
+.table-scroll{overflow-x:auto}
+
+.demo-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gray-light);margin:.3rem 0 1.6rem;border:1px solid var(--gray-light)}
+.demo{background:var(--white);padding:1.1rem .9rem;text-align:center}
+.demo-n{font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--navy);line-height:1}
+.demo-l{font-size:.58rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gray);margin-top:.35rem;line-height:1.45}
+
+.sub-label{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin-bottom:.7rem}
+.commercial-btns{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.85rem}
+.commercial-btns .btn{flex:1 1 220px;justify-content:center;padding:1.05rem 1.4rem;font-size:.78rem}
+
+/* Imagery: one lead image plus an even grid, all on a consistent ratio */
+.comm-media{position:sticky;top:96px}
+.commercial-img{aspect-ratio:3/2;background:var(--cream-dark)}
+.commercial-img img{width:100%;height:100%;object-fit:cover;object-position:center;clip-path:none}
+.comm-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.comm-tile{
+  position:relative;overflow:hidden;aspect-ratio:3/2;background:var(--cream-dark);
+  border:1px solid var(--gold-pale);cursor:zoom-in;
+}
+.comm-tile::after{
+  content:'B';position:absolute;top:.5rem;right:.5rem;
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(36,59,52,.82);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;font-weight:400;line-height:1;
+  opacity:0;transition:opacity .25s var(--ease);
+}
+.comm-tile:hover::after{opacity:1}
+.comm-tile img{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+  transition:transform .5s var(--ease);
+}
+.comm-tile:hover img{transform:scale(1.05)}
+.comm-tile figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(to top,rgba(36,59,52,.92),rgba(36,59,52,0));
+  color:#fff;padding:1.5rem .8rem .55rem;
+  font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+}
+@media(max-width:1024px){
+  .comm-media{position:static}
+  .opt-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .comm-grid{grid-template-columns:1fr}
+  .demo-row{grid-template-columns:1fr}
+  .commercial-btns .btn{flex:1 1 100%}
+}
 
 /* ══════════════════════════════════════════
    SECTION 6 — TIMELINE
@@ -1554,51 +1638,114 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
 <section id="commercial">
   <div class="container">
     <div class="commercial-layout">
-      <div>
-        <span class="eyebrow reveal">Commercial Opportunities</span>
-        <h2 class="section-title reveal reveal-d1">8 Premium Commercial<br/><em>Pad Sites Available</em></h2>
+      <div class="comm-intro">
+        <span class="eyebrow reveal">Golden Mile at San Sebastian</span>
+        <h2 class="section-title reveal reveal-d1">8 Commercial Pad Sites<br/><em>On Business 77</em></h2>
         <span class="divider-gold reveal reveal-d1"></span>
-        <p class="section-body reveal reveal-d2">San Sebastian is a 47-acre modern community combining residential living with commercial convenience. Eight subdivided and engineered pad sites front Business 77, offering exceptional visibility and access. Sizes range from 1.01 AC to 1.60 AC with full infrastructure — drainage, water, and sewer easements in place.</p>
-        <div class="highlight-box reveal reveal-d3">
-          <p><strong style="color:var(--sand)">Strategic Location</strong> — San Benito, TX (Cameron County), one of the fastest-growing markets in the Rio Grande Valley. 24,700+ residents with continued growth projections. Direct access to Oscar Williams Rd and minutes from I-69E.</p>
+        <p class="section-body reveal reveal-d2">Nine and a half acres of C-2 zoned pad sites fronting W Business 77, inside a 47-acre master-planned community with 185 residential lots behind them. Pads run from 1.01 to 1.60 acres, subdivided and engineered, with drainage, water and sewer easements in place. Every pad is available to buy, to lease build-to-suit, or on a ground lease.</p>
+
+        <p class="sub-label reveal reveal-d3">Three Ways to Acquire</p>
+        <div class="opt-grid reveal reveal-d3">
+          <div class="opt">
+            <div class="opt-n">Option 1</div>
+            <div class="opt-t">Pad Site Purchase</div>
+            <div class="opt-p">$15.00</div>
+            <div class="opt-u">Per SF · Sale price</div>
+            <p class="opt-d">Own the dirt. Suits retail developers, restaurant and coffee users, medical and office owner-users, and 1031 exchange buyers.</p>
+          </div>
+          <div class="opt">
+            <div class="opt-n">Option 2</div>
+            <div class="opt-t">Build-to-Suit</div>
+            <div class="opt-p">$24.00</div>
+            <div class="opt-u">Per SF · NNN · 3% annual</div>
+            <p class="opt-d">Take a suite in a proposed inline building from 1,195 to 2,296 SF, or have one built around your requirement. No development risk.</p>
+          </div>
+          <div class="opt">
+            <div class="opt-n">Option 3</div>
+            <div class="opt-t">Ground Lease</div>
+            <div class="opt-p">$1.00&ndash;$1.25</div>
+            <div class="opt-u">Per SF per year · NNN</div>
+            <p class="opt-d">15 to 20 year terms plus options, 10% increase every five years. The tenant builds and owns its building. Aimed at national restaurant, coffee, bank and pharmacy brands.</p>
+          </div>
         </div>
-        <p style="font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--navy);margin-bottom:.8rem" class="reveal reveal-d3">Highlights</p>
-        <ul class="reveal reveal-d3" style="list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.2rem">
-          <li style="font-size:.85rem;line-height:1.7;color:#54514A;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">&#9670;</span> 185 residential lots creating built-in demand</li>
-          <li style="font-size:.85rem;line-height:1.7;color:#54514A;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">&#9670;</span> 2 playgrounds, dog parks, soccer &amp; basketball fields, trails</li>
-          <li style="font-size:.85rem;line-height:1.7;color:#54514A;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">&#9670;</span> Regional access via Business 77, Oscar Williams Rd &amp; I-69E</li>
-          <li style="font-size:.85rem;line-height:1.7;color:#54514A;padding-left:1.2rem;position:relative"><span style="position:absolute;left:0;color:var(--gold)">&#9670;</span> High demand for retail, medical, food &amp; beverage, services</li>
-        </ul>
-        <p style="font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--navy);margin-bottom:.8rem" class="reveal reveal-d4">Ideal Uses</p>
+
+      </div>
+
+      <div class="comm-detail">
+        <p class="sub-label reveal reveal-d3">Pad Schedule &amp; Sale Pricing</p>
+        <div class="table-scroll reveal reveal-d3">
+          <table class="pad-table">
+            <thead><tr><th>Pad</th><th>Acres</th><th>Area</th><th>Price @ $15/SF</th></tr></thead>
+            <tbody>
+          <tr class="ph"><td colspan="4">Phase A</td></tr>
+          <tr><td>Lot 1</td><td>1.60 AC</td><td>69,480 SF</td><td>$1,042,200</td></tr>
+          <tr><td>Lot 2</td><td>1.03 AC</td><td>44,688 SF</td><td>$670,320</td></tr>
+          <tr><td>Lot 3</td><td>1.24 AC</td><td>54,000 SF</td><td>$810,000</td></tr>
+          <tr><td>Lot 4</td><td>1.24 AC</td><td>54,000 SF</td><td>$810,000</td></tr>
+          <tr class="ph"><td colspan="4">Phase B</td></tr>
+          <tr><td>Lot 1</td><td>1.24 AC</td><td>54,000 SF</td><td>$810,000</td></tr>
+          <tr><td>Lot 2</td><td>1.24 AC</td><td>54,000 SF</td><td>$810,000</td></tr>
+          <tr><td>Lot 3</td><td>1.37 AC</td><td>59,683 SF</td><td>$895,245</td></tr>
+          <tr><td>Lot 4</td><td>1.01 AC</td><td>44,069 SF</td><td>$661,035</td></tr>
+            </tbody>
+            <tfoot><tr><td>Total</td><td>9.96 AC</td><td>433,920 SF</td><td>$6,508,800</td></tr></tfoot>
+          </table>
+        </div>
+
+        <p class="sub-label reveal reveal-d4">Trade Area</p>
+        <div class="demo-row reveal reveal-d4">
+          <div class="demo"><div class="demo-n">81,545</div><div class="demo-l">Residents<br/>5-mile radius</div></div>
+          <div class="demo"><div class="demo-n">27,647</div><div class="demo-l">Households<br/>5-mile radius</div></div>
+          <div class="demo"><div class="demo-n">$66,749</div><div class="demo-l">Avg HH Income<br/>5-mile radius</div></div>
+        </div>
+
+        <div class="highlight-box reveal reveal-d4">
+          <p><strong style="color:var(--sand)">Why this corridor</strong> &mdash; All eight pads front W Business 77, which TxDOT counted at 21,900 vehicles per day in 2025. 185 residential lots sit directly behind them, and Oscar Williams Road and I-69E carry regional traffic past the site. San Benito is among the fastest-growing markets in the Rio Grande Valley.</p>
+        </div>
+
+        <p class="sub-label reveal reveal-d4">Ideal Uses</p>
         <div class="business-tags reveal reveal-d4">
-          <span class="tag">Retail</span>
-          <span class="tag">Medical</span>
-          <span class="tag">Food &amp; Beverage</span>
-          <span class="tag">Financial Services</span>
-          <span class="tag">Build-to-Suit</span>
+          <span class="tag">Retail Centers</span>
+          <span class="tag">Quick-Service Restaurants</span>
+          <span class="tag">Coffee Concepts</span>
+          <span class="tag">Medical &amp; Professional Office</span>
+          <span class="tag">Childcare &amp; Education</span>
+          <span class="tag">Service Businesses</span>
         </div>
-        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap" class="reveal reveal-d4">
-          <a href="https://san-sebastian.rainearchitects.com/" target="_blank" rel="noopener" class="btn btn-gold">Take a Virtual Tour →</a>
-          <a href="assets/san-sebastian-lot-details.pdf" class="btn btn-outline-navy" download="San-Sebastian-Lot-Details.pdf">Download Lot Details</a>
+
+        <div class="commercial-btns reveal reveal-d4">
+          <a href="assets/san-sebastian-offering-memorandum.pdf" class="btn btn-amber-solid" download="San-Sebastian-Offering-Memorandum.pdf">Download Offering Memorandum</a>
+          <a href="https://san-sebastian.rainearchitects.com/" target="_blank" rel="noopener" class="btn btn-navy-solid">Take a Virtual Tour &rarr;</a>
           <a href="https://properties.svnhannasolutionscre.com/SanSebastianPadSites" target="_blank" rel="noopener" class="btn btn-outline-navy">View Listing</a>
           <a href="#contact" class="btn btn-outline-navy">Contact Broker</a>
         </div>
       </div>
-      <div>
+
+      <div class="comm-media">
         <div class="commercial-img reveal reveal-d2">
-          <img src="assets/gallery/commercial-corridor-wide.jpg" alt="San Sebastian commercial corridor showing 8 commercial pad sites with acreage and surrounding national retailers" loading="lazy"/>
+          <img src="assets/gallery/commercial-corridor-wide.jpg" alt="Aerial of the San Sebastian commercial corridor showing the eight pad sites along W Business 77 with surrounding national retailers" loading="lazy"/>
           <div class="traffic-badge">
             <div class="traffic-badge-num">21,900</div>
-            <div class="traffic-badge-lbl">Vehicles/Day<br/>Business 77 · TxDOT 2025</div>
+            <div class="traffic-badge-lbl">Vehicles/Day<br/>Business 77 &middot; TxDOT 2025</div>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
-          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-a-detail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A lot detail with acreage" loading="lazy"/></div>
-          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-b-detail.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B lot detail with acreage" loading="lazy"/></div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px">
-          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-a-ground-level.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase A ground level view" loading="lazy"/></div>
-          <div style="overflow:hidden;height:160px"><img src="assets/gallery/phase-b-ground-level.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform .5s;clip-path:inset(0 1.5% 0 0)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" alt="Phase B ground level view with retail context" loading="lazy"/></div>
+        <div class="comm-grid reveal reveal-d3">
+          <figure class="comm-tile" onclick="openSoloLightbox('assets/gallery/phase-a-detail.jpg','Phase A pad sites with acreage')">
+            <img src="assets/gallery/phase-a-detail.jpg" alt="Phase A pad sites with acreage callouts" loading="lazy"/>
+            <figcaption>Phase A &middot; Lots 1&ndash;4</figcaption>
+          </figure>
+          <figure class="comm-tile" onclick="openSoloLightbox('assets/gallery/phase-b-detail.jpg','Phase B pad sites with acreage')">
+            <img src="assets/gallery/phase-b-detail.jpg" alt="Phase B pad sites with acreage callouts" loading="lazy"/>
+            <figcaption>Phase B &middot; Lots 1&ndash;4</figcaption>
+          </figure>
+          <figure class="comm-tile" onclick="openSoloLightbox('assets/gallery/phase-a-context-retail.jpg','Phase A in context with nearby retail, schools and I-69E')">
+            <img src="assets/gallery/phase-a-context-retail.jpg" alt="Phase A with nearby retail, schools and Interstate 69E" loading="lazy"/>
+            <figcaption>Retail Context</figcaption>
+          </figure>
+          <figure class="comm-tile" onclick="openSoloLightbox('assets/gallery/rendering-commercial-siteplan.jpg','Conceptual build-to-suit site plan, Buildings A to F (Raine Architects)')">
+            <img src="assets/gallery/rendering-commercial-siteplan.jpg" alt="Conceptual build-to-suit commercial site plan showing buildings A through F" loading="lazy"/>
+            <figcaption>Build-to-Suit Concept</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -2092,9 +2239,9 @@ details.faq-item[open] summary::after{content:'−';transform:translateY(-50%)}
         <div class="doc-card">
           <div class="doc-icon">PDF</div>
           <div class="doc-title">Offering Memorandum</div>
-          <p class="doc-desc">Full lot detail package for the commercial pad sites, including site plan, acreage schedule, location context and market overview.</p>
-          <div class="doc-meta"><span>PDF</span><span>12 pages</span><span>5.0 MB</span></div>
-          <a href="assets/san-sebastian-lot-details.pdf" class="btn btn-gold" download="San-Sebastian-Lot-Details.pdf">Download &darr;</a>
+          <p class="doc-desc">The commercial offering for Golden Mile at San Sebastian: pad schedule with pricing, the three acquisition options, build-to-suit concepts, trade-area demographics and location maps.</p>
+          <div class="doc-meta"><span>PDF</span><span>15 pages</span><span>6.4 MB</span></div>
+          <a href="assets/san-sebastian-offering-memorandum.pdf" class="btn btn-gold" download="San-Sebastian-Offering-Memorandum.pdf">Download &darr;</a>
         </div>
         <div class="doc-card">
           <div class="doc-icon">HOA</div>
